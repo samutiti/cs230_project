@@ -1,5 +1,5 @@
 
-# CellSighter
+# CS 230 Project Merged From - CellSighter
 <img src="./CellSighterLogo.jpg" style="width: 15%; height: 15%">
 
 
