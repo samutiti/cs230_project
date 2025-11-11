@@ -1,0 +1,26 @@
+{
+  "num_classes": 8,
+  "class_names": [
+    "Dividing",
+    "Early Phagocytosis",
+    "Fried egg",
+    "Intermediate Phagocytosis",
+    "Late Phagocytosis",
+    "Migrating",
+    "Quiescent",
+    "Searching"
+  ],
+  "label2idx": {
+    "Dividing": 0,
+    "Early Phagocytosis": 1,
+    "Fried egg": 2,
+    "Intermediate Phagocytosis": 3,
+    "Late Phagocytosis": 4,
+    "Migrating": 5,
+    "Quiescent": 6,
+    "Searching": 7
+  },
+  "num_train": 1882,
+  "num_val": 467,
+  "images_dir": "/scratch/groups/emmalu/samutiti/raw_phage_crops"
+}

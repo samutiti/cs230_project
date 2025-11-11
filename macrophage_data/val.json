@@ -1,0 +1,3493 @@
+[
+  {
+    "filename": "Region2_t001_s048_ch00_193.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_208.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_128.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_198.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_210.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_85.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_254.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_83.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_38.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_72.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_316.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_21.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_188.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_284.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_126.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_16.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_28.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_191.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s076_ch00_72.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_56.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_19.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_76.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_30.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_36.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_203.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_313.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_13.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_50.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_46.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_67.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s076_ch00_29.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_77.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_13.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_126.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_175.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_6.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_31.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_187.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_16.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_118.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_141.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_143.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_43.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_157.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_295.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_321.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_108.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_80.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_47.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_38.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_65.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_286.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_31.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_218.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_158.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_67.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_119.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_237.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_100.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_8.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_113.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_19.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_105.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_67.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_136.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_27.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_220.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_5.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_156.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_243.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_103.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_46.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_179.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_86.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_42.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_37.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_22.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_173.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_264.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_79.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_151.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_137.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_82.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_238.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_112.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_124.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_59.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_109.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_162.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_114.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_267.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_55.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_69.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_33.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_221.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_108.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_17.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_118.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_271.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s076_ch00_43.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_18.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_184.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_98.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_99.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_127.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_69.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_260.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_229.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_123.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_48.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_298.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_87.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_273.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_206.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_119.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_182.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_70.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_31.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_13.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_10.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_31.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_39.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_223.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_95.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_56.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_12.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_67.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_6.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_122.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_102.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_60.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_47.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_284.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_115.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_26.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_64.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_108.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_139.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_253.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_211.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_30.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_213.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_209.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_162.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_134.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_43.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_227.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_249.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_31.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_80.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_124.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_78.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_15.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_16.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_192.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_151.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_225.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_160.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_54.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_242.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_62.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_150.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_76.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_143.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_46.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_131.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_193.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s076_ch00_130.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_139.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_8.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_228.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_52.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_87.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_243.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_152.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_46.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_50.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_302.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_54.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_64.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_280.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_62.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_31.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_131.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_118.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_35.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_166.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_64.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_50.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_23.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_42.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_82.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_71.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_68.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_92.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_67.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_250.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_16.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_164.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_144.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_344.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_136.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_289.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_81.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_160.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_107.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_113.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_105.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_303.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_14.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_258.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_205.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_170.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_204.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_67.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_107.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_152.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_65.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_140.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_92.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_240.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_9.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_120.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_89.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_86.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_114.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_25.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_18.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_153.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_59.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_95.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_150.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_89.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_149.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_103.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_30.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_104.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_132.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_49.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_322.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_156.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_111.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_23.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_319.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_87.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_72.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_108.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_62.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_289.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_94.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_153.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_29.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_97.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_23.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_80.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_125.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_107.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_58.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_97.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_140.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_137.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_126.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_206.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_71.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_152.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_20.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_185.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_197.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_127.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_68.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_13.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_60.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_59.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_49.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_54.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_59.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_88.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_193.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_228.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_75.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_110.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_79.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_234.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_193.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_23.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_113.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_110.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_107.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_95.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_100.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_129.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_132.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_71.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_116.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_17.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_51.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_20.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_11.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_147.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_268.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_52.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_219.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_83.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_13.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_147.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_52.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_25.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_83.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_92.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_122.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_153.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_44.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_57.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_154.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_156.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_144.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_33.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_76.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_308.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_75.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_150.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_42.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_120.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_43.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_24.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_291.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_101.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_125.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_80.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_39.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_142.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_85.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_37.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_189.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_140.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_128.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_5.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_93.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_52.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_44.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_46.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_196.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_71.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_308.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_75.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_24.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_73.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_208.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_80.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_201.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_70.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_30.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_176.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_148.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_119.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_76.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_68.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_180.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_70.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_143.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_30.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_113.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_16.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_274.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_112.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_14.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_111.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_269.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_142.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_109.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s076_ch00_18.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_42.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_168.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_92.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s092_ch00_10.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_178.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_221.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_87.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_128.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_81.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_58.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_134.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_57.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_33.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_101.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_109.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_137.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s054_ch00_88.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_36.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_71.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_188.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_19.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_41.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_238.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_112.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_195.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_64.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_91.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_157.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_221.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_212.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_183.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_47.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_16.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_64.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_60.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_13.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_177.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_259.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s066_ch00_85.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_77.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_258.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_248.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_59.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_85.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s072_ch00_134.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_12.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_64.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_64.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s123_ch00_36.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_93.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s088_ch00_82.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s059_ch00_41.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s109_ch00_10.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_189.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_166.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_19.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_195.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_62.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_204.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s092_ch00_70.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_267.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_91.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_40.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_224.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_118.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_134.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_227.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s043_ch00_145.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_200.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_175.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_129.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_38.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_263.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_163.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_153.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s090_ch00_72.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s095_ch00_52.tiff",
+    "label": 3,
+    "original_labels": [
+      "Intermediate Phagocytosis",
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_223.tiff",
+    "label": 6,
+    "original_labels": [
+      "Quiescent"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s011_ch00_230.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_129.tiff",
+    "label": 2,
+    "original_labels": [
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_24.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_82.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_90.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s026_ch00_99.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_265.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_121.tiff",
+    "label": 4,
+    "original_labels": [
+      "Late Phagocytosis",
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s031_ch00_192.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s108_ch00_8.tiff",
+    "label": 1,
+    "original_labels": [
+      "Early Phagocytosis",
+      "Fried egg"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s006_ch00_136.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Early Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t168_s009_ch00_105.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s090_ch00_59.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching",
+      "Late Phagocytosis"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s077_ch00_44.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s001_ch00_73.tiff",
+    "label": 0,
+    "original_labels": [
+      "Dividing"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_60.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating"
+    ]
+  },
+  {
+    "filename": "Region2_t001_s048_ch00_120.tiff",
+    "label": 7,
+    "original_labels": [
+      "Searching"
+    ]
+  },
+  {
+    "filename": "Region2_t045_s006_ch00_294.tiff",
+    "label": 5,
+    "original_labels": [
+      "Migrating",
+      "Intermediate Phagocytosis"
+    ]
+  }
+]
