@@ -2,9 +2,13 @@
 # CS 230 Project Forked From - CellSighter
 
 **Files added and modified for project:**
+
 macrophage_classification.ipynb
+
 generate_embeddings.py
+
 macrophage_experiment/*
+
 macrophage_data/*
 
 
