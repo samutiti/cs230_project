@@ -11,6 +11,7 @@ macrophage_experiment/*
 
 macrophage_data/*
 
+--------
 
 CellSighter is an ensemble of convolutional neural networks to perform supervised cell classification in multiplexed images. Given a labeled training set, a model can be trained to predict cell classes for new images.
 
