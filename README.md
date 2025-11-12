@@ -1,6 +1,11 @@
 
 # CS 230 Project Forked From - CellSighter
-<img src="./CellSighterLogo.jpg" style="width: 15%; height: 15%">
+
+**Files added and modified for project:**
+macrophage_classification.ipynb
+generate_embeddings.py
+macrophage_experiment/*
+macrophage_data/*
 
 
 CellSighter is an ensemble of convolutional neural networks to perform supervised cell classification in multiplexed images. Given a labeled training set, a model can be trained to predict cell classes for new images.
