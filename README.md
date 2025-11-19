@@ -11,6 +11,8 @@ macrophage_experiment/*
 
 macrophage_data/*
 
+vq_vae/*
+
 --------
 
 Original README.md:
