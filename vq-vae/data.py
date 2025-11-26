@@ -1,16 +1,15 @@
 # Dataset & Loaders
 # Authors: Samantha Mutiti & Rong Chi
-import torch
 import torch.nn as nn
-import json, os
+import os
 import tifffile as tf
 import numpy as np
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 from torchvision.transforms import ToTensor
 from utils import *
 
 class CropDataset(Dataset):
-    def __init__(self, file_dir:str, type:str='train', transforms:nn.Sequential=None):
+    def __init__(self, file_dir:str, type:str='train', transforms:nn.Sequential=nn.Sequential([ToTensor])):
         """
         Custom Dataset for loading crop data.
 

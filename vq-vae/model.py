@@ -1,12 +1,10 @@
 # Model Code
 # Authors: Samantha Mutiti & Rong Chi
 import torch
-import torchvision
 import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from utils import *
 
 # Notes:
 # Crop Statistics (dimensions)
@@ -155,19 +153,19 @@ class CellVQVAE(nn.Module):
 
 
 # Understanding the loss computation for VQ-VAE
-# Codebook Loss: This term updates the codebook embeddings (the \(e_{k}\) vectors). 
+## Codebook Loss: This term updates the codebook embeddings (the \(e_{k}\) vectors). 
 ### pulls the chosen codebook vector (vq embedding) toward that output, so the
 ### codebook learns to better represent the encoder's outputs
 
-# Commitment Loss: This term is crucial for training the encoder network. It uses a 
+## Commitment Loss: This term is crucial for training the encoder network. It uses a 
 ### stop-gradient operator on the vq embeddings and penalizes the encoder when 
 ### its output  drifts too far from the selected codebook entry. This encourages 
 ### the encoder to "commit" to specific, stable regions in the latent space
 
-# Reconstruction Loss:
+## Reconstruction Loss:
 ### typical encoder loss for properly reconstructing the images
     
-# references:
-## GitHub Implementation: https://github.com/MishaLaskin/vqvae
-## Original Paper: https://arxiv.org/abs/1711.00937
-## Reference Article: https://huggingface.co/blog/ariG23498/understand-vq
+# References:
+### GitHub Implementation: https://github.com/MishaLaskin/vqvae
+### Original Paper: https://arxiv.org/abs/1711.00937
+### Reference Article: https://huggingface.co/blog/ariG23498/understand-vq

@@ -2,13 +2,13 @@
 # Authors: Samantha Mutiti & Rong Chi
 
 import torch
-import torch.nn as nn
 from torch.utils.data import DataLoader
-import json, os, argparse
+import json, argparse
 from tqdm import tqdm
 
 from model import CellVQVAE
 from data import CropDataset
+from utils import *
 
 optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD}
 
@@ -31,14 +31,17 @@ def train(config, augment_epoch=-1):
             pass # TODO: implement data augmentation start here
         loss = 0
         for batch_idx, (images, _) in enumerate(tqdm(dataloader, desc="Training Progress")):
-            # TODO: normalize the batch data?
+            images = normalize_input_01(images) # normalize the data QUESTION: is this an okay noramlization method?
             loss += model.train_step(images, optimizer)
-        avg_loss = loss / batch_idx
-        train_epoch[epoch] = avg_loss
+        avg_loss = loss / (batch_idx + 1) # batch_idx should = number of batches - 1
+        train_epoch[epoch] = avg_loss 
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")
-    # Save the trained model
+    
+    # Save the trained model and training loss
     model_save_path = config.get('model_save_path', 'vq_vae_model.pth')
     torch.save(model.state_dict(), model_save_path)
+    with open(config.get('model_save_path', 'train_loss.json'), 'w') as f:
+        json.dump(train_epoch, f)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train VQ-VAE Model')
