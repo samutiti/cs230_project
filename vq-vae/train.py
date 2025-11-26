@@ -11,9 +11,10 @@ from data import CropDataset
 from utils import *
 
 optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD}
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def train(config, augment_epoch=-1):
-    model = CellVQVAE(activation=config['activation'], embedding_dim=config['embedding_dim'])
+    model = CellVQVAE(activation=config['activation'], embedding_dim=config['embedding_dim']).to(device) # send model to device
     optimizer = optimizer_dict[config['optimizer']](model.parameters(), lr=config['learning_rate'])
     transforms = config.get('transforms', None) # this will be a string need to convert to nn.Sequential if not None
     if transforms is not None:
@@ -32,6 +33,7 @@ def train(config, augment_epoch=-1):
         loss = 0
         for batch_idx, (images, _) in enumerate(tqdm(dataloader, desc="Training Progress")):
             images = normalize_input_01(images) # normalize the data QUESTION: is this an okay noramlization method?
+            images = images.to(device) # send to device
             loss += model.train_step(images, optimizer)
         avg_loss = loss / (batch_idx + 1) # batch_idx should = number of batches - 1
         train_epoch[epoch] = avg_loss 
