@@ -14,15 +14,15 @@ optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD}
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def train(config, augment_epoch=-1):
-    model = CellVQVAE(activation=config['activation'], embedding_dim=config['embedding_dim']).to(device) # send model to device
-    optimizer = optimizer_dict[config['optimizer']](model.parameters(), lr=config['learning_rate'])
+    model = CellVQVAE(activation=config['activation'], embedding_dim=int(config['embedding_dim'])).to(device) # send model to device
+    optimizer = optimizer_dict[config['optimizer']](model.parameters(), lr=float(config['learning_rate']))
     transforms = config.get('transforms', None) # this will be a string need to convert to nn.Sequential if not None
     if transforms is not None:
         pass # TODO: put str --> nn.Sequential code here
     # NOTE: somewhere can we schedule learning rate decay and data augmentation policies?
     # load data
     dataset = CropDataset(file_dir=config['data_directory'], type='train', transforms=transforms)
-    dataloader = DataLoader(dataset, batch_size=config['batch_size'], shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=int(config['batch_size']), shuffle=True)
     # prep training
     epochs = config['epochs']
     train_epoch = {}
@@ -42,7 +42,7 @@ def train(config, augment_epoch=-1):
     # Save the trained model and training loss
     model_save_path = config.get('model_save_path', 'vq_vae_model.pth')
     torch.save(model.state_dict(), model_save_path)
-    with open(config.get('model_save_path', 'train_loss.json'), 'w') as f:
+    with open(config.get('train_loss_save_path', 'train_loss.json'), 'w') as f:
         json.dump(train_epoch, f)
 
 if __name__ == '__main__':

@@ -1,10 +1,7 @@
 # Model Code
 # Authors: Samantha Mutiti & Rong Chi
 import torch
-import torchvision.transforms as transforms
 import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
 
 # Notes:
 # Crop Statistics (dimensions)
