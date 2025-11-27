@@ -17,7 +17,7 @@ def plot_loss(filepath, show:bool = True, save:bool = True, save_dir:str = os.ge
     for key in keys:
         val_list.append(data[key]) # preserve order
     
-    plt.scatter(key_list, val_list)
+    plt.scatter(key_list, val_list, linestyle='-')
     plt.title('Training Loss over Epochs')
     
     if save:
