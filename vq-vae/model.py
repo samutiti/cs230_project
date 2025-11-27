@@ -121,9 +121,9 @@ class CellVQVAE(nn.Module):
 
     def forward(self, x):
         x_encoded = self.encoder(x)  # Encode input to latent space
-        x_q, vq_loss, encoding_indices = self.vq_layer(x_encoded)  # Vector quantization
+        x_q, vq_loss, _ = self.vq_layer(x_encoded)  # Vector quantization
         x_reconstructed = self.decoder(x_q)  # Decode quantized latent vectors
-        return x_reconstructed, vq_loss, encoding_indices
+        return x_reconstructed, vq_loss, x_encoded
     
     def train(self, mode=True):
         super().train(mode)

@@ -3,6 +3,10 @@
 import json, os, argparse
 import matplotlib.pyplot as plt
 
+import torch
+from model import CellVQVAE
+from data import CropDataset
+
 def plot_loss(filepath, show:bool = True, save:bool = True, save_dir:str = os.getcwd()):
     ''' plots training loss from json 
     EXPECTED FORMAT:
@@ -26,6 +30,30 @@ def plot_loss(filepath, show:bool = True, save:bool = True, save_dir:str = os.ge
     
     if show: plt.show()
 
+def model_inference(config_file, image_directory):
+    ''' performs inference 
+    Args:
+        config_file (str): path to the config file used to train the model
+        image_directory (str): path to the directory containing images 
+    Returns:
+        results (tuple): (reconstructions, losses, embeddings)
+        filenames (list): list of filenames
+    '''
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    with open(config_file, 'r') as f:
+        config = json.load(f)
+    model = CellVQVAE(activation=config['activation'], embedding_dim=int(config['embedding_dim'])).to(device)
+    model_load_path = os.path.join(config['save_directory'], 'vq_vae_model.pth') # assuming model weights are specified here
+    model.load_state_dict(torch.load(model_load_path, map_location=device))
+    model.eval()
+
+    # load images
+    dataset = CropDataset(file_dir=image_directory, type='test')
+    inputs, filenames = dataset[:]
+    inputs = inputs.to(device)
+    results = model(inputs) # format (reconstructions, losses, embeddings)
+    return results, filenames
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
