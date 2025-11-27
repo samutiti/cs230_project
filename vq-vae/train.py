@@ -21,7 +21,7 @@ def train(config, augment_epoch=-1):
         pass # TODO: put str --> nn.Sequential code here
     # NOTE: somewhere can we schedule learning rate decay and data augmentation policies?
     # load data
-    dataset = CropDataset(file_dir=config['data_directory'], type='train', transforms=transforms)
+    dataset = CropDataset(file_dir=config['data_directory'], type='train')
     dataloader = DataLoader(dataset, batch_size=int(config['batch_size']), shuffle=True)
     # prep training
     epochs = config['epochs']
