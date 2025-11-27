@@ -65,17 +65,15 @@ class Decoder(nn.Module):
             nn.Linear(784, 32 * 7 * 7),
             activation
         )
-        self.deconv_layers = nn.Sequential(
-            # torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size, stride=1, padding=0, ...)
-            nn.ConvTranspose2d(32, 16, 7, stride=5), # new size = 16x35x35
-            nn.BatchNorm2d(16),
-            activation,
-            nn.ConvTranspose2d(16, 8, 5, stride=3), # new size = 8x123x123
-            nn.BatchNorm2d(8),
-            activation,
-            nn.ConvTranspose2d(8, 4, 3, stride=2), # new size = 4x247x247 (close to 256x256)
-            nn.Sigmoid() # to ensure output is between [0, 1]
-        )
+        self.deconv_layers =  nn.Sequential(
+            nn.ConvTranspose2d(32, 16, 7, stride=5, output_padding=4), 
+            nn.BatchNorm2d(16), 
+            activation, 
+            nn.ConvTranspose2d(16, 8, 5, stride=3, output_padding=2), 
+            nn.BatchNorm2d(8), 
+            activation, 
+            nn.ConvTranspose2d(8, 4, 3, stride=2, output_padding=1), 
+            nn.Sigmoid())
     
     def forward(self, x):
         x = self.body(x)
@@ -99,7 +97,7 @@ class VectorQuantizer(nn.Module):
         embeddings: (num_embeddings, embedding_dim) - embedding weights'''
         # need to calulate distanced between x and embedding weights
         # Calculate distances
-        x = torch.tensor(x, dtype=self.embeddings.weight.dtype)
+        x = x.to(self.embeddings.weight.dtype)
         x_norm = torch.sum(x**2, dim=1, keepdim=True)  # (batch_size, 1)
         e_norm = torch.sum(self.embeddings.weight**2, dim=1)  # (num_embeddings,)
         dis_mat = x_norm + e_norm - 2 * torch.matmul(x, self.embeddings.weight.t())  # (batch_size, num_embeddings)
