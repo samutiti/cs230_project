@@ -11,9 +11,10 @@ def plot_loss(filepath, show:bool = True, save:bool = True, save_dir:str = os.ge
     with open(filepath, 'r') as f:
         data = json.load(f)
     
-    key_list = list(data.keys())
+    keys = list(data.keys())
+    key_list = [int(k) for k in keys]
     val_list = []
-    for key in key_list:
+    for key in keys:
         val_list.append(data[key]) # preserve order
     
     plt.scatter(key_list, val_list)
