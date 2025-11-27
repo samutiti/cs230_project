@@ -32,10 +32,10 @@ if __name__ == "__main__":
     # will add more options for eval
     parser.add_argument('--plot_loss', action='store_true', help='plot training loss from json file')
     parser.add_argument('--loss_filepath', type=str, default='./', help='path to training loss json file')
-    parser.add_argument('--show', action='store_true', default=True, help='show the plot')
-    parser.add_argument('--save', action='store_true', default=True, help='save the plot')
+    parser.add_argument('--no_show', action='store_false', default=True, help='block showing the plot')
+    parser.add_argument('--no_save', action='store_false', default=True, help='block saving the plot')
     parser.add_argument('--save_dir', type=str, default=os.getcwd(), help='directory to save the plot')
     args = parser.parse_args()
 
     if args.plot_loss:
-        plot_loss(args.loss_filepath, show=args.show, save=args.save, save_dir=args.save_dir)
+        plot_loss(args.loss_filepath, show=args.no_show, save=args.no_save, save_dir=args.save_dir)
