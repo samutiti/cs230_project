@@ -5,6 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 import json, argparse
 from tqdm import tqdm
+import os
 
 from model import CellVQVAE
 from data import CropDataset
@@ -40,9 +41,10 @@ def train(config, augment_epoch=-1):
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")
     
     # Save the trained model and training loss
-    model_save_path = config.get('model_save_path', 'vq_vae_model.pth')
+    save_dir = config['save_directory']
+    model_save_path = os.path.join(save_dir, 'vq_vae_model.pth')
     torch.save(model.state_dict(), model_save_path)
-    with open(config.get('train_loss_save_path', 'train_loss.json'), 'w') as f:
+    with open(os.path.join(save_dir, 'train_loss.json'), 'w') as f:
         json.dump(train_epoch, f)
 
 if __name__ == '__main__':
