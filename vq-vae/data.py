@@ -9,7 +9,7 @@ from torchvision.transforms import ToTensor
 from utils import *
 
 class CropDataset(Dataset):
-    def __init__(self, file_dir:str, type:str='train', transforms:nn.Sequential=nn.Sequential(ToTensor)):
+    def __init__(self, file_dir:str, type:str='train', transforms:nn.Sequential=None):
         """
         Custom Dataset for loading crop data.
 
