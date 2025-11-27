@@ -14,6 +14,12 @@ from utils import *
 optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD}
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+def check_config(config):
+    required_keys = ['data_directory', 'save_directory', 'batch_size', 'learning_rate', 'optimizer', 'embedding_dim', 'activation', 'epochs']
+    for key in required_keys:
+        if key not in config:
+            raise ValueError(f'Missing required config key: {key}')
+
 def train(config, augment_epoch=-1):
     model = CellVQVAE(activation=config['activation'], embedding_dim=int(config['embedding_dim'])).to(device) # send model to device
     optimizer = optimizer_dict[config['optimizer']](model.parameters(), lr=float(config['learning_rate']))
@@ -56,6 +62,7 @@ if __name__ == '__main__':
     # Load configuration
     with open(args.config, 'r') as f:
         config = json.load(f)
+    check_config(config) # check config before model loading/training
 
     # Example: Print out the configuration
     print("Training configuration:")
