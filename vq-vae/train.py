@@ -32,7 +32,7 @@ def train(config, augment_epoch=-1):
             pass # TODO: implement data augmentation start here
         loss = 0
         for batch_idx, (images, _) in enumerate(tqdm(dataloader, desc="Training Progress")):
-            images = normalize_input_01(images) # normalize the data QUESTION: is this an okay noramlization method?
+            # images = normalize_input_01(images) # normalize the data QUESTION: is this an okay noramlization method?
             images = images.to(device) # send to device
             loss += model.train_step(images, optimizer)
         avg_loss = loss / (batch_idx + 1) # batch_idx should = number of batches - 1
