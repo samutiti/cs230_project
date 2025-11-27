@@ -60,4 +60,4 @@ if __name__ == '__main__':
     for key, value in config.items():
         print(f"\t{key}: {value}")
 
-    train(config, argument_epoch=args.augment_epoch)
+    train(config, augment_epoch=args.augment_epoch)
