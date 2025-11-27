@@ -43,7 +43,7 @@ def train(config, augment_epoch=-1):
             images = images.to(device) # send to device
             loss += model.train_step(images, optimizer)
         avg_loss = loss / (batch_idx + 1) # batch_idx should = number of batches - 1
-        train_epoch[epoch] = avg_loss 
+        train_epoch[epoch] = avg_loss.item() 
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")
     
     # Save the trained model and training loss
