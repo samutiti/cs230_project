@@ -59,4 +59,4 @@ class CropDataset(Dataset):
         pad_dims = math.ceil(pad_dims[0] / 2), math.ceil(pad_dims[1] / 2) # ceil the division so that we can do center padding
         image = nn.functional.pad(image, (pad_dims[0], pad_dims[0], pad_dims[1], pad_dims[1], 0, 0))  # CxHxW images Pad to 256x256
         image = image[:, :256, :256]  # Crop to 256x256 if larger (none from this dataset should be, if there are any we may adjust the default size)
-        return image, image_filename
+        return image.to(dtype=torch.float32), image_filename
