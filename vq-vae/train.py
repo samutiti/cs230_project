@@ -48,6 +48,10 @@ def train(config, augment_epoch=-1):
     
     # Save the trained model and training loss
     save_dir = config['save_directory']
+    try:
+        os.mkdir(save_dir)
+    except FileExistsError:
+        pass
     model_save_path = os.path.join(save_dir, 'vq_vae_model.pth')
     torch.save(model.state_dict(), model_save_path)
     with open(os.path.join(save_dir, 'train_loss.json'), 'w') as f:
