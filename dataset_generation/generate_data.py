@@ -39,7 +39,7 @@ def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
             (cell_crop, np.expand_dims(mask_crop, axis=-1)), axis=-1
         )
         # write data
-        with open(f'{save_dir}/{save_prefix}.tif', 'w') as f:
+        with open(f'{save_dir}/{save_prefix}_{cell_id}.tif', 'w') as f:
             tf.imwrite(f, cell_crop)
 
 def main(input_dir, output_dir):
