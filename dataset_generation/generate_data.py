@@ -1,9 +1,10 @@
 # Authors: Samantha Mutiti & Rong Chi
-import cellpose
+from cellpose import models
 import numpy as np
 import tifffile as tf
 import os, argparse
 from tqdm import tqdm
+import torch
 
 
 def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
@@ -48,7 +49,7 @@ def main(input_dir, output_dir):
         output_dir (str): directory to save cropped images
     '''
     # Initialize Cellpose model
-    model = cellpose.models.Cellpose() # assuming cellsam
+    model = models.CellposeModel(gpu=torch.cuda.is_available()) # assuming cellsam
     file_list = os.listdir(input_dir)
     for file in file_list:
         if file.split('.')[-1] != 'tif' and file.split('.')[-1] != 'tiff':
