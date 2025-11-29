@@ -3,6 +3,7 @@ import cellpose
 import numpy as np
 import tifffile as tf
 import os, argparse
+from tqdm import tqdm
 
 
 def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
@@ -19,7 +20,7 @@ def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
     pass
     cell_indices = np.unique(mask)
     cell_indices = cell_indices[cell_indices != 0]
-    for cell_id in cell_indices:
+    for cell_id in tqdm(cell_indices, desc=f'Cropping cells for {save_prefix}'):
         y_coords, x_coords = np.where(mask == cell_id)
         x_min, x_max = x_coords.min(), x_coords.max()
         y_min, y_max = y_coords.min(), y_coords.max()
@@ -37,7 +38,7 @@ def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
             (cell_crop, np.expand_dims(mask_crop, axis=-1)), axis=-1
         )
         # write data
-        with open(f'{save_prefix}.tif', 'w') as f:
+        with open(f'{save_dir}/{save_prefix}.tif', 'w') as f:
             tf.imwrite(f, cell_crop)
 
 def main(input_dir, output_dir):
