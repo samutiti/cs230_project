@@ -54,7 +54,7 @@ def main(input_dir, output_dir):
     for file in file_list:
         if file.split('.')[-1] != 'tif' and file.split('.')[-1] != 'tiff':
             continue
-        image = tf.imread(file)
+        image = tf.imread(f'{input_dir}/{file}')
         data = model.eval(image)
         mask = data[0]
         save_prefix = file.split('.')[0]
