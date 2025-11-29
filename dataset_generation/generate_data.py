@@ -5,6 +5,8 @@ import tifffile as tf
 import os, argparse
 from tqdm import tqdm
 import torch
+import re
+from collections import defaultdict
 
 
 def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
@@ -42,23 +44,100 @@ def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
         with open(f'{save_dir}/{save_prefix}_{cell_id}.tif', 'w') as f:
             tf.imwrite(f, cell_crop)
 
+def load_multichannel_image(input_dir, base_name):
+    """Load all 4 channels for a given base name and combine them into a single multi-channel image.
+    
+    Args:
+        input_dir (str): directory containing tif images
+        base_name (str): base name without channel suffix (e.g., "Region 2_t001_s099")
+    
+    Returns:
+        np.array: Combined multi-channel image with shape (H, W, 4)
+    """
+    channels = []
+    for ch in range(4):
+        channel_file = f"{base_name}_ch{ch:02d}.tif"
+        channel_path = os.path.join(input_dir, channel_file)
+        
+        if not os.path.exists(channel_path):
+            raise FileNotFoundError(f"Channel file not found: {channel_path}")
+        
+        channel_image = tf.imread(channel_path)
+        # Ensure channel is 2D (H, W)
+        if len(channel_image.shape) == 3:
+            channel_image = channel_image[:, :, 0]  # Take first channel if it's RGB
+        channels.append(channel_image)
+    
+    # Stack channels along the last axis to create (H, W, 4) array
+    multichannel_image = np.stack(channels, axis=-1)
+    return multichannel_image
+
+def group_files_by_base_name(file_list):
+    """Group files by their base name (without channel suffix).
+    
+    Args:
+        file_list (list): List of filenames
+    
+    Returns:
+        dict: Dictionary mapping base names to lists of channel files
+    """
+    # Pattern to match files with channel suffix: _ch00, _ch01, _ch02, _ch03
+    channel_pattern = r'^(.+)_ch(\d{2})\.tiff?$'
+    grouped_files = defaultdict(list)
+    
+    for file in file_list:
+        match = re.match(channel_pattern, file)
+        if match:
+            base_name = match.group(1)
+            channel_num = int(match.group(2))
+            grouped_files[base_name].append((channel_num, file))
+    
+    # Filter to only include base names that have all 4 channels
+    complete_groups = {}
+    for base_name, channel_files in grouped_files.items():
+        if len(channel_files) == 4:
+            # Sort by channel number to ensure correct order
+            channel_files.sort(key=lambda x: x[0])
+            complete_groups[base_name] = [f[1] for f in channel_files]
+    
+    return complete_groups
+
 def main(input_dir, output_dir):
     ''' generates cell crops from images in input_dir and saves to output_dir
     Args:
-        input_dir (str): directory containing tif images
+        input_dir (str): directory containing tif images with 4 channels each
         output_dir (str): directory to save cropped images
     '''
     # Initialize Cellpose model
     model = models.CellposeModel(gpu=torch.cuda.is_available()) # assuming cellsam
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
     file_list = os.listdir(input_dir)
-    for file in file_list:
-        if file.split('.')[-1] != 'tif' and file.split('.')[-1] != 'tiff':
+    
+    # Group files by base name (without channel suffix)
+    grouped_files = group_files_by_base_name(file_list)
+    
+    print(f"Found {len(grouped_files)} complete image sets (with all 4 channels)")
+    
+    for base_name, channel_files in tqdm(grouped_files.items(), desc="Processing image sets"):
+        try:
+            # Load all 4 channels and combine into single multi-channel image
+            multichannel_image = load_multichannel_image(input_dir, base_name)
+            
+            # Run cellpose segmentation on the multi-channel image
+            # Note: Cellpose typically works best with specific channels, you may want to
+            # select specific channels for segmentation (e.g., DAPI channel)
+            data = model.eval(multichannel_image)
+            mask = data[0]
+            
+            # Save cell crops with the base name as prefix
+            save_cell_crops(mask, multichannel_image, base_name, output_dir)
+            
+        except Exception as e:
+            print(f"Error processing {base_name}: {str(e)}")
             continue
-        image = tf.imread(f'{input_dir}/{file}')
-        data = model.eval(image)
-        mask = data[0]
-        save_prefix = file.split('.')[0]
-        save_cell_crops(mask, image, save_prefix, output_dir)
 
 
 if __name__ == '__main__':
