@@ -62,8 +62,8 @@ def main(input_dir, output_dir):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('input_dir', type=str, required=True, help='Directory containing input tif images')
-    parser.add_argument('output_dir', type=str, required=True, help='Directory to save')
+    parser.add_argument('input_dir', type=str, help='Directory containing input tif images')
+    parser.add_argument('output_dir', type=str, help='Directory to save')
     args = parser.parse_args()
 
     main(args.input_dir, args.output_dir)
