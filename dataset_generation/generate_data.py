@@ -31,6 +31,7 @@ def save_cell_crops(mask, image, save_prefix, save_dir, buffer:int=10):
         y_start, y_end = max(y_min - buffer, 0), min(y_max + buffer, image.shape[1])
         cell_crop = image[y_start:y_end, x_start:x_end, :]
         mask_crop = mask[y_start:y_end, x_start:x_end]
+        mask_crop = mask_crop.astype(np.uint8)
         # append mask as last channel of cell data
         cell_crop = np.concatenate(
             (cell_crop, np.expand_dims(mask_crop, axis=-1)), axis=-1

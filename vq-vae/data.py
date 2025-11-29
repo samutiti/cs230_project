@@ -52,11 +52,12 @@ class CropDataset(Dataset):
         # perform transforms
         image = ToTensor()(image)  # Convert to tensor
         image = normalize_input_01(image)  # Normalize to [0, 1]
-        if image.shape[0] != 4: # ensure CxHxW format (no ims should have dimension 4 in H or W)
+        if image.shape[0] > 5: # ensure CxHxW format (no ims should have dimension 4 or 5 in H or W)
             image = image.permute(2, 0, 1) # reshape to CxHxW
         # Perform center padding to 256x256
         pad_dims = max(256 - image.shape[2], 0), max(256 - image.shape[1], 0)
         pad_dims = math.ceil(pad_dims[0] / 2), math.ceil(pad_dims[1] / 2) # ceil the division so that we can do center padding
         image = nn.functional.pad(image, (pad_dims[0], pad_dims[0], pad_dims[1], pad_dims[1], 0, 0))  # CxHxW images Pad to 256x256
-        image = image[:, :256, :256]  # Crop to 256x256 if larger (none from this dataset should be, if there are any we may adjust the default size)
-        return image.to(dtype=torch.float32), image_filename
+        image = image[:4, :256, :256]  # Crop to 256x256 if larger (none from this dataset should be, if there are any we may adjust the default size)
+        mask = image[-1, :, :]
+        return image.to(dtype=torch.float32), mask, image_filename

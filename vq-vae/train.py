@@ -38,10 +38,10 @@ def train(config, augment_epoch=-1):
         if epoch == augment_epoch:
             pass # TODO: implement data augmentation start here
         loss = 0
-        for batch_idx, (images, _) in enumerate(tqdm(dataloader, desc="Training Progress Epoch {}".format(epoch+1))):
+        for batch_idx, (images, masks, _) in enumerate(tqdm(dataloader, desc="Training Progress Epoch {}".format(epoch+1))):
             # images = normalize_input_01(images) # normalize the data QUESTION: is this an okay noramlization method?
             images = images.to(device) # send to device
-            loss += model.train_step(images, optimizer)
+            loss += model.train_step(images, masks, optimizer)
         avg_loss = loss / (batch_idx + 1) # batch_idx should = number of batches - 1
         train_epoch[epoch] = avg_loss.item() 
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")

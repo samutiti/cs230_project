@@ -128,7 +128,7 @@ class CellVQVAE(nn.Module):
     def train(self, mode=True):
         super().train(mode)
 
-    def train_step(self, x, optimizer):
+    def train_step(self, x, optimizer, masks=None):
         self.train()
         optimizer.zero_grad()
 
@@ -137,7 +137,11 @@ class CellVQVAE(nn.Module):
         
         # loss computation
         # loss = reconstruction loss + vq loss + commitment loss
-        reconstruction_loss = nn.MSELoss()(x_reconstructed, x)
+        if masks is not None:
+            reconstruction_loss = nn.MSELoss()(x_reconstructed * masks, x * masks) # add mask here (hopefully shapes work out :D)
+        else:
+            reconstruction_loss = nn.MSELoss()(x_reconstructed, x)
+
         loss = vq_loss + reconstruction_loss
         loss.backward()
         
