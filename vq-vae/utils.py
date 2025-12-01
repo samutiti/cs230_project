@@ -25,6 +25,7 @@ def normalize_input_01(x:torch.Tensor):
     Args:
         x (torch.Tensor): input tensor of shape (batch, channels, h, w)
     """
+    x = x.float()
     x = x - torch.min(x) # now ranges from 0 to max - min
     x = x / torch.max(x) # now ranges from 0 to 1
     return x

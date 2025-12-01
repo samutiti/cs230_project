@@ -1,3 +1,4 @@
+# Authors: Samantha Mutiti & Rong Chi
 import os, argparse, shutil
 import numpy as np
 from tqdm import tqdm
