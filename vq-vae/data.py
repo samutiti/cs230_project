@@ -43,7 +43,7 @@ class CropDataset(Dataset):
         ''' returns length of the dataset '''
         return len(self.file_list)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx, crop_dim=300):
         ''' retrieves item at idx
         Parameters:
             idx(int): index of data item to return'''
@@ -55,9 +55,9 @@ class CropDataset(Dataset):
         if image.shape[0] > 5: # ensure CxHxW format (no ims should have dimension 4 or 5 in H or W)
             image = image.permute(2, 0, 1) # reshape to CxHxW
         # Perform center padding to 256x256
-        pad_dims = max(256 - image.shape[2], 0), max(256 - image.shape[1], 0)
+        pad_dims = max(crop_dim - image.shape[2], 0), max(crop_dim - image.shape[1], 0)
         pad_dims = math.ceil(pad_dims[0] / 2), math.ceil(pad_dims[1] / 2) # ceil the division so that we can do center padding
         image = nn.functional.pad(image, (pad_dims[0], pad_dims[0], pad_dims[1], pad_dims[1], 0, 0))  # CxHxW images Pad to 256x256
-        image = image[:4, :256, :256]  # Crop to 256x256 if larger (none from this dataset should be, if there are any we may adjust the default size)
+        image = image[:4, :crop_dim, :crop_dim]  # Crop to 256x256 if larger (none from this dataset should be, if there are any we may adjust the default size)
         mask = image[-1, :, :]
         return image.to(dtype=torch.float32), mask, image_filename
