@@ -22,10 +22,12 @@ def analyze(input_dir, output_file='analysis_results.json'):
         'median_width': sorted(widths)[len(widths) // 2],
         'num_images': len(file_list),
         'min_height': min(heights),
-        'max_height': max(heights),  
+        'max_height': max(heights),
+        'min_width': min(widths),
+        'max_width': max(widths)  
     }
 
-    with open(os.path.join(input_dir, output_file), 'w') as f:
+    with open(output_file, 'w') as f:
         json.dump(data_dict, f, indent=4)
 
 
