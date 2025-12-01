@@ -31,7 +31,7 @@ def analyze(input_dir, output_file='analysis_results.json'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('input_dir', type=str, required=True, help='Directory to analyze')
+    parser.add_argument('input_dir', type=str, help='Directory to analyze')
     parser.add_argument('--output_file', type=str, default='analysis_results.json', help='Output JSON file name')
     args = parser.parse_args()
 
