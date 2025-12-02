@@ -52,8 +52,11 @@ class Encoder(nn.Module):
     def _calculate_conv_output_size(self, input_size):
         """Calculate spatial size after all conv and pooling operations"""
         size = input_size
+        size = size - 2  # First Conv2d(3x3)
         size = size // 2  # First MaxPool2d(2, 2)
+        size = size - 4  # Second Conv2d(5x5)
         size = size // 3  # Second MaxPool2d(3, 3)
+        size = size - 6  # Third Conv2d(7x7)
         size = size // 5  # Third MaxPool2d(5, 5)
         return size
 
