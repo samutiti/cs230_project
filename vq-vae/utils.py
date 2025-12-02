@@ -44,13 +44,17 @@ def normalize_input_zscore(x:torch.Tensor):
     return x
 
 
-def compute_dataset_statisticas(dataset: torch.utils.data.Dataset):
+def compute_dataset_statistics(dataset: torch.utils.data.Dataset):
     """
     Compute the mean and standard deviation of a dataset.
 
     Args:
         dataset (torch.utils.data.Dataset): Dataset to compute statistics for """
-    all_data = dataset[:][0] # dataset returns image, mask, filename
+    all_data = [] # dataset returns image, mask, filename
+    for i in range(len(dataset)):
+        image, _, _ = dataset[i]
+        all_data.append(image)
+    all_data = torch.stack(all_data)
     mean = torch.mean(all_data, dim=[0, 2, 3]) # mean over batch, height, width
     std = torch.std(all_data, dim=[0, 2, 3]) # std over batch, height, width
     return mean, std
