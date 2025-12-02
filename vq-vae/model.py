@@ -160,6 +160,8 @@ class CellVQVAE(nn.Module):
         # loss computation
         # loss = reconstruction loss + vq loss + commitment loss
         if masks is not None:
+            if len(masks.shape) == 3:
+                masks = masks.unsqueeze(1)  # add channel dimension
             reconstruction_loss = nn.MSELoss()(x_reconstructed * masks, x * masks) # add mask here (hopefully shapes work out :D)
         else:
             reconstruction_loss = nn.MSELoss()(x_reconstructed, x)
