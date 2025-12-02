@@ -68,11 +68,13 @@ class Encoder(nn.Module):
 
 # Decoder Class
 class Decoder(nn.Module):
-    def __init__(self, activation='relu', embedding_dim=512, flattened_size=1568):
+    def __init__(self, activation='relu', embedding_dim=512, flattened_size=1568, final_spatial_size=7):
         super().__init__()
         if activation not in activation_dict:
             raise ValueError(f'activation {activation} not supported')
         activation = activation_dict[activation]
+        self.flattened_size = flattened_size
+        self.final_spatial_size = final_spatial_size
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 784),
             activation,
@@ -91,7 +93,7 @@ class Decoder(nn.Module):
     
     def forward(self, x):
         x = self.body(x)
-        x = x.view(-1, 32, 7, 7)  # Reshape to (batch_size, 32, 7, 7)
+        x = x.view(-1, 32, self.final_spatial_size, self.final_spatial_size)  # Reshape to (batch_size, 32, 7, 7)
         x = self.deconv_layers(x)
         return x
 
