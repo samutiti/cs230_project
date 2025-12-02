@@ -17,11 +17,12 @@ activation_dict = {'relu': nn.ReLU(), 'tanh': nn.Tanh(), 'sigmoid': nn.Sigmoid()
 
 # Encoder Class
 class Encoder(nn.Module):
-    def __init__(self, activation='relu', embed_dim=512):
+    def __init__(self, activation='relu', embed_dim=512, input_size=300):
         super().__init__()
         if activation not in activation_dict:
             raise ValueError(f'activation {activation} not supported')
         activation = activation_dict[activation]
+        self.input_size = input_size
         # inputs = 4x256x256
         # torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, ...)
         self.conv_layers = nn.Sequential(
@@ -39,12 +40,22 @@ class Encoder(nn.Module):
             nn.BatchNorm2d(32),
             activation,
         )
+        self.final_spatial_size = self._calculate_conv_output_size(input_size)
+        self.flattened_size = 32 * self.final_spatial_size * self.final_spatial_size
         # torch.nn.Linear(in_features, out_features, ...)
         self.body = nn.Sequential(
-            nn.Linear(32 * 7 * 7, 784),
+            nn.Linear(self.flattened_size, 784),
             activation,
             nn.Linear(784, embed_dim)
         )
+    
+    def _calculate_conv_output_size(self, input_size):
+        """Calculate spatial size after all conv and pooling operations"""
+        size = input_size
+        size = size // 2  # First MaxPool2d(2, 2)
+        size = size // 3  # Second MaxPool2d(3, 3)
+        size = size // 5  # Third MaxPool2d(5, 5)
+        return size
 
     def forward(self, x):
         x = self.conv_layers(x)
