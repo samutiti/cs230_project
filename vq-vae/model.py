@@ -59,7 +59,7 @@ class Encoder(nn.Module):
 
     def forward(self, x):
         x = self.conv_layers(x)
-        x = x.view(-1, 32 * 7 * 7)  # Flatten the tensor for the linear layers
+        x = x.view(-1, self.flattened_size)  # Flatten the tensor for the linear layers
         x = self.body(x)
         return x
 
