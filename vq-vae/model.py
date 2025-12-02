@@ -68,7 +68,7 @@ class Encoder(nn.Module):
 
 # Decoder Class
 class Decoder(nn.Module):
-    def __init__(self, activation='relu', embedding_dim=512):
+    def __init__(self, activation='relu', embedding_dim=512, flattened_size=1568):
         super().__init__()
         if activation not in activation_dict:
             raise ValueError(f'activation {activation} not supported')
@@ -76,7 +76,7 @@ class Decoder(nn.Module):
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 784),
             activation,
-            nn.Linear(784, 32 * 7 * 7),
+            nn.Linear(784, flattened_size),
             activation
         )
         self.deconv_layers =  nn.Sequential(
@@ -130,7 +130,7 @@ class CellVQVAE(nn.Module):
         super().__init__()
         # what is a good number of embeddings
         self.encoder = Encoder(activation=activation, embed_dim=embedding_dim)
-        self.decoder = Decoder(activation=activation,embedding_dim=embedding_dim)
+        self.decoder = Decoder(activation=activation,embedding_dim=embedding_dim, flattened_size=self.encoder.flattened_size)
         self.vq_layer = VectorQuantizer(num_embeddings, embedding_dim, commitment_cost)
 
     def forward(self, x):
