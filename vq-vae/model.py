@@ -132,7 +132,11 @@ class CellVQVAE(nn.Module):
         super().__init__()
         # what is a good number of embeddings
         self.encoder = Encoder(activation=activation, embed_dim=embedding_dim)
-        self.decoder = Decoder(activation=activation,embedding_dim=embedding_dim, flattened_size=self.encoder.flattened_size)
+        self.decoder = Decoder(activation=activation,
+                               embedding_dim=embedding_dim, 
+                               # transfer encoder data
+                               flattened_size=self.encoder.flattened_size, 
+                               final_spatial_size=self.encoder.final_spatial_size)
         self.vq_layer = VectorQuantizer(num_embeddings, embedding_dim, commitment_cost)
 
     def forward(self, x):
