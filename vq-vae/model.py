@@ -82,14 +82,15 @@ class Decoder(nn.Module):
             activation
         )
         self.deconv_layers =  nn.Sequential(
-            nn.ConvTranspose2d(32, 16, 7, stride=5, output_padding=4), 
+            nn.ConvTranspose2d(32, 16, kernel_size=7, stride=5, padding=1, output_padding=2), 
             nn.BatchNorm2d(16), 
             activation, 
-            nn.ConvTranspose2d(16, 8, 5, stride=3, output_padding=2), 
+            nn.ConvTranspose2d(16, 8, kernel_size=5, stride=3, padding=1, output_padding=1), 
             nn.BatchNorm2d(8), 
             activation, 
-            nn.ConvTranspose2d(8, 4, 3, stride=2, output_padding=1), 
-            nn.Sigmoid())
+            nn.ConvTranspose2d(8, 4, kernel_size=3, stride=2, padding=1, output_padding=1), 
+            nn.Sigmoid()
+        )
     
     def forward(self, x):
         x = self.body(x)
