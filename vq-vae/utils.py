@@ -3,6 +3,8 @@
 import torch
 from torch import nn
 
+train_dataset_mean = 0
+train_dataset_std = 1 # need to compute and replace with true values
 
 def normalize_input(x: torch.Tensor, eps: float = 1e-8) -> torch.Tensor:
     """
@@ -29,3 +31,26 @@ def normalize_input_01(x:torch.Tensor):
     x = x - torch.min(x) # now ranges from 0 to max - min
     x = x / torch.max(x) # now ranges from 0 to 1
     return x
+
+def normalize_input_zscore(x:torch.Tensor):
+    """ 
+    Z-score normalization using precomputed dataset mean and std
+    Args:
+        x (torch.Tensor): input tensor of shape (batch, channels, h, w)
+    """
+    global train_dataset_mean, train_dataset_std
+    x = x.float()
+    x = (x - train_dataset_mean) / train_dataset_std
+    return x
+
+
+def compute_dataset_statisticas(dataset: torch.utils.data.Dataset):
+    """
+    Compute the mean and standard deviation of a dataset.
+
+    Args:
+        dataset (torch.utils.data.Dataset): Dataset to compute statistics for """
+    all_data = dataset[:][0] # dataset returns image, mask, filename
+    mean = torch.mean(all_data, dim=[0, 2, 3]) # mean over batch, height, width
+    std = torch.std(all_data, dim=[0, 2, 3]) # std over batch, height, width
+    return mean, std

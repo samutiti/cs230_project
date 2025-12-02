@@ -51,7 +51,7 @@ class CropDataset(Dataset):
         image = np.array(tf.imread(os.path.join(self.data_directory, image_filename)))
         # perform transforms
         image = ToTensor()(image)  # Convert to tensor
-        image = normalize_input_01(image)  # Normalize to [0, 1]
+        # image = normalize_input_01(image)  # Normalize to [0, 1] REMOVING FOR NOW
         if image.shape[0] > 5: # ensure CxHxW format (no ims should have dimension 4 or 5 in H or W)
             image = image.permute(2, 0, 1) # reshape to CxHxW
         # Perform center padding to 256x256
