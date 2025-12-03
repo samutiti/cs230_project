@@ -26,25 +26,45 @@ class Encoder(nn.Module):
         # inputs = 4x256x256
         # torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, ...)
         self.conv_layers = nn.Sequential(
-            # torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, ...)
-            nn.Conv2d(4, 8, 3), # new size = 8x254x254
-            nn.MaxPool2d(2, 2), # new size = 8x127x127
+            # Layer 1: 
+            nn.Conv2d(4, 8, kernel_size=7, stride=3, padding=1),
+            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(8),
             activation,
-            nn.Conv2d(8, 16, 5), # 16x123x123
-            nn.MaxPool2d(3, 3), # new size = 16x41x141
+            
+            # Layer 2:
+            nn.Conv2d(8, 16, kernel_size=3, stride=2, padding=1),
+            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(16),
             activation,
-            nn.Conv2d(16, 32, 7), # 32x35x35
-            nn.MaxPool2d(5, 5), # new size = 32x7x7 (1568 features)
+            
+            # Layer 3:
+            nn.Conv2d(16, 24, kernel_size=3, stride=2, padding=1),
+            nn.MaxPool2d(1, 1),  # No additional pooling
+            nn.BatchNorm2d(24),
+            activation,
+            
+            # Layer 4:
+            nn.Conv2d(24, 32, kernel_size=3, stride=2, padding=0),
+            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(32),
             activation,
+            
+            # Layer 5:
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.MaxPool2d(1, 1),  # No additional pooling
+            nn.BatchNorm2d(64),
+            activation,
         )
+
         self.final_spatial_size = self._calculate_conv_output_size(input_size)
-        self.flattened_size = 32 * self.final_spatial_size * self.final_spatial_size
+        self.flattened_size = 64 * self.final_spatial_size * self.final_spatial_size
         # torch.nn.Linear(in_features, out_features, ...)
         self.body = nn.Sequential(
-            nn.Linear(self.flattened_size, 784),
+            nn.Linear(self.flattened_size, 1024),
+            activation,
+            nn.Dropout(0.2), # added dropout layer
+            nn.Linear(1024, 784), # extra linear layer
             activation,
             nn.Linear(784, embed_dim)
         )
@@ -52,12 +72,12 @@ class Encoder(nn.Module):
     def _calculate_conv_output_size(self, input_size):
         """Calculate spatial size after all conv and pooling operations"""
         size = input_size
-        size = size - 2  # First Conv2d(3x3)
-        size = size // 2  # First MaxPool2d(2, 2)
-        size = size - 4  # Second Conv2d(5x5)
-        size = size // 3  # Second MaxPool2d(3, 3)
-        size = size - 6  # Third Conv2d(7x7)
-        size = size // 5  # Third MaxPool2d(5, 5)
+        size = (size - 7 + 2*1) // 3 + 1  # Layer 1
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 2
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 3
+        size = (size - 3 + 2*0) // 2 + 1  # Layer 4
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 5
+
         return size
 
     def forward(self, x):
@@ -78,24 +98,42 @@ class Decoder(nn.Module):
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 784),
             activation,
-            nn.Linear(784, flattened_size),
+            nn.Dropout(0.2), # added dropout layer regularizer
+            nn.Linear(784, 1024),
+            activation,
+            nn.Linear(1024, self.flattened_size),
             activation
         )
         print('WARNING: Decoder produces 300x300 dim square image')
-        self.deconv_layers =  nn.Sequential(
-            nn.ConvTranspose2d(32, 16, kernel_size=7, stride=5, padding=1, output_padding=2), 
-            nn.BatchNorm2d(16), 
-            activation, 
-            nn.ConvTranspose2d(16, 8, kernel_size=27, stride=3, padding=0, output_padding=0), 
-            nn.BatchNorm2d(8), 
-            activation, 
-            nn.ConvTranspose2d(8, 4, kernel_size=3, stride=2, padding=1, output_padding=1), 
+        self.deconv_layers = nn.Sequential(
+            # Layer 1:
+            nn.ConvTranspose2d(64, 32, kernel_size=3, stride=2, padding=1, output_padding=1),
+            nn.BatchNorm2d(32),
+            activation,
+            
+            # Layer 2:
+            nn.ConvTranspose2d(32, 24, kernel_size=3, stride=2, padding=0, output_padding=1),
+            nn.BatchNorm2d(24),
+            activation,
+            
+            # Layer 3: 
+            nn.ConvTranspose2d(24, 16, kernel_size=3, stride=2, padding=1, output_padding=1),
+            nn.BatchNorm2d(16),
+            activation,
+            
+            # Layer 4:
+            nn.ConvTranspose2d(16, 8, kernel_size=3, stride=2, padding=1, output_padding=1),
+            nn.BatchNorm2d(8),
+            activation,
+            
+            # Layer 5:
+            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=2),
             nn.Sigmoid()
         )
     
     def forward(self, x):
         x = self.body(x)
-        x = x.view(-1, 32, self.final_spatial_size, self.final_spatial_size)  # Reshape to (batch_size, 32, 7, 7)
+        x = x.view(-1, 64, self.final_spatial_size, self.final_spatial_size)  # Reshape to (batch_size, 64, 7, 7)
         x = self.deconv_layers(x)
         return x
 
