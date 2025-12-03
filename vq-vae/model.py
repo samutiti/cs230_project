@@ -127,7 +127,7 @@ class Decoder(nn.Module):
             activation,
             
             # 99x99 → 300x300
-            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=0),
+            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=1),
             nn.Sigmoid()
         )
     
