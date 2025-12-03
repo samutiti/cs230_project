@@ -106,28 +106,28 @@ class Decoder(nn.Module):
         )
         print('WARNING: Decoder produces 300x300 dim square image')
         self.deconv_layers = nn.Sequential(
-            # 7x7 → 15x15
-            nn.ConvTranspose2d(64, 32, kernel_size=3, stride=2, padding=1, output_padding=1),
+            # 6x6 → 12x12
+            nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1, output_padding=0),
             nn.BatchNorm2d(32),
             activation,
             
-            # 15x15 → 30x30
-            nn.ConvTranspose2d(32, 24, kernel_size=3, stride=2, padding=1, output_padding=1),
+            # 12x12 → 25x25
+            nn.ConvTranspose2d(32, 24, kernel_size=4, stride=2, padding=1, output_padding=1),
             nn.BatchNorm2d(24),
             activation,
             
-            # 30x30 → 60x60
-            nn.ConvTranspose2d(24, 16, kernel_size=3, stride=2, padding=1, output_padding=1),
+            # 25x25 → 50x50
+            nn.ConvTranspose2d(24, 16, kernel_size=4, stride=2, padding=1, output_padding=0),
             nn.BatchNorm2d(16),
             activation,
             
-            # 60x60 → 120x120
+            # 50x50 → 99x99
             nn.ConvTranspose2d(16, 8, kernel_size=3, stride=2, padding=1, output_padding=1),
             nn.BatchNorm2d(8),
             activation,
             
-            # 120x120 → 300x300 (exact calculation)
-            nn.ConvTranspose2d(8, 4, kernel_size=5, stride=3, padding=2, output_padding=2),
+            # 99x99 → 300x300
+            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=0),
             nn.Sigmoid()
         )
     
