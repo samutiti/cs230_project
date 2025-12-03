@@ -72,11 +72,11 @@ class Encoder(nn.Module):
     def _calculate_conv_output_size(self, input_size):
         """Calculate spatial size after all conv and pooling operations"""
         size = input_size
-        size = (size - 7 + 2*1) // 3 + 1  # Layer 1
-        size = (size - 3 + 2*1) // 2 + 1  # Layer 2
-        size = (size - 3 + 2*1) // 2 + 1  # Layer 3
-        size = (size - 3 + 2*0) // 2 + 1  # Layer 4
-        size = (size - 3 + 2*1) // 2 + 1  # Layer 5
+        size = (size - 7 + 2*1) // 3 + 1  # Layer 1: 300 -> 100
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 2: 100 -> 50
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 3: 50 -> 25
+        size = (size - 3 + 2*0) // 2 + 1  # Layer 4: 25 -> 12
+        size = (size - 3 + 2*1) // 2 + 1  # Layer 5: 12 -> 6
 
         return size
 
@@ -88,7 +88,7 @@ class Encoder(nn.Module):
 
 # Decoder Class
 class Decoder(nn.Module):
-    def __init__(self, activation='relu', embedding_dim=512, flattened_size=1568, final_spatial_size=7):
+    def __init__(self, activation='relu', embedding_dim=512, flattened_size=2304, final_spatial_size=6):
         super().__init__()
         if activation not in activation_dict:
             raise ValueError(f'activation {activation} not supported')
@@ -104,7 +104,7 @@ class Decoder(nn.Module):
             nn.Linear(1024, self.flattened_size),
             activation
         )
-        print('WARNING: Decoder produces 300x300 dim square image')
+        print('INFO: Decoder configured to produce 300x300 output from 6x6 input')
         self.deconv_layers = nn.Sequential(
             # 6x6 → 12x12
             nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1, output_padding=0),
@@ -122,7 +122,7 @@ class Decoder(nn.Module):
             activation,
             
             # 50x50 → 99x99
-            nn.ConvTranspose2d(16, 8, kernel_size=3, stride=2, padding=1, output_padding=1),
+            nn.ConvTranspose2d(16, 8, kernel_size=3, stride=2, padding=1, output_padding=0),
             nn.BatchNorm2d(8),
             activation,
             
