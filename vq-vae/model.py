@@ -127,7 +127,7 @@ class Decoder(nn.Module):
             activation,
             
             # Layer 5:
-            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=2),
+            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=2, output_padding=2),
             nn.Sigmoid()
         )
     

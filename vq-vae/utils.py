@@ -52,7 +52,9 @@ def compute_dataset_statistics(dataset: torch.utils.data.Dataset, batch_size: in
     Compute the mean and standard deviation of a dataset.
 
     Args:
-        dataset (torch.utils.data.Dataset): Dataset to compute statistics for """
+        dataset (torch.utils.data.Dataset): Dataset to compute statistics for  (batch, channels, h, w).
+        batch_size (int): Batch size for loading data.
+    """
     sum_pixels = 0.0
     sum_squared_pixels = 0.0
     total_pixels = 0
