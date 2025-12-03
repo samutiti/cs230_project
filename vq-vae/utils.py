@@ -3,8 +3,11 @@
 import torch
 from torch import nn
 
-train_dataset_mean = 0
-train_dataset_std = 1 # need to compute and replace with true values
+# For Macrophage_dataset (R. Chi and S. Mutiti, 2025)
+## Dataset Mean: tensor([ 24.3902, 101.4538,  14.4291,  14.5543]), Dataset Std: tensor([223.8065, 701.5453, 135.7977, 105.5642])
+## Per channel mean and stdev
+train_dataset_mean = torch.tensor([ 24.3902, 101.4538,  14.4291,  14.5543]).view(1, -1, 1, 1)
+train_dataset_std = torch.tensor([223.8065, 701.5453, 135.7977, 105.5642]).view(1, -1, 1, 1)
 
 def normalize_input(x: torch.Tensor, eps: float = 1e-8) -> torch.Tensor:
     """
