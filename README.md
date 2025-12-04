@@ -13,6 +13,8 @@ macrophage_data/*
 
 vq_vae/*
 
+dataset_generation/*
+
 --------
 
 Original README.md:

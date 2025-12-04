@@ -165,7 +165,6 @@ class VectorQuantizer(nn.Module):
         commitment_loss = nn.MSELoss()(x_quantized, x.detach()) * self.commitment_cost
         return x_quantized, codebook_loss + commitment_loss, embed_inds
     
-    
 # full class for VQ-VAE   
 class CellVQVAE(nn.Module):
     def __init__(self, activation='relu', embedding_dim=512, commitment_cost=0.25, reconstruction_loss_weight=1.0, num_embeddings=1024):

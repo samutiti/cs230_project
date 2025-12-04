@@ -51,7 +51,7 @@ def model_inference(config_file, image_directory):
     # load images
     dataset = CropDataset(file_dir=image_directory, type='test')
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=len(dataset), shuffle=False)
-    inputs, filenames = next(iter(dataloader))
+    inputs, _, filenames = next(iter(dataloader))
     inputs = inputs.to(device)
     results = model(inputs) # format (reconstructions, losses, embeddings)
     return results, filenames

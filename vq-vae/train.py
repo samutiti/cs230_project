@@ -1,4 +1,3 @@
-# training code for model will go here
 # Authors: Samantha Mutiti & Rong Chi
 
 import torch
