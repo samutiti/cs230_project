@@ -164,8 +164,8 @@ class VectorQuantizer(nn.Module):
         dis_mat = x_norm + e_norm - 2 * torch.matmul(x, self.embeddings.weight.t())
         embed_inds = torch.argmin(dis_mat, dim=1)
         x_quantized = self.embeddings(embed_inds)
-        codebook_loss = nn.MSELoss()(x_quantized.detach(), x)
-        commitment_loss = nn.MSELoss()(x_quantized, x.detach()) * self.commitment_cost
+        codebook_loss = nn.MSELoss()(x_quantized, x.detach())
+        commitment_loss = nn.MSELoss()(x_quantized.detach(), x) * self.commitment_cost
         return x_quantized, codebook_loss + commitment_loss, embed_inds
 
 # Dynamic VQ-VAE with adaptive padding and mask-weighted loss

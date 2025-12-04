@@ -155,8 +155,8 @@ class VectorQuantizer(nn.Module):
         embed_inds = torch.argmin(dis_mat, dim=1)  # (batch_size,)
         x_quantized = self.embeddings(embed_inds)  # (batch_size, embedding_dim)
         # compute losses
-        codebook_loss = nn.MSELoss()(x_quantized.detach(), x)
-        commitment_loss = nn.MSELoss()(x_quantized, x.detach()) * self.commitment_cost
+        codebook_loss = nn.MSELoss()(x_quantized, x.detach())
+        commitment_loss = nn.MSELoss()(x_quantized.detach(), x) * self.commitment_cost
         return x_quantized, codebook_loss + commitment_loss, embed_inds
     
 # full class for VQ-VAE   
