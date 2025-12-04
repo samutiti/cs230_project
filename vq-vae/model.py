@@ -23,36 +23,31 @@ class Encoder(nn.Module):
             raise ValueError(f'activation {activation} not supported')
         activation = activation_dict[activation]
         self.input_size = input_size
-        # inputs = 4x256x256
+        # inputs = 4x300x300
         # torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, ...)
         self.conv_layers = nn.Sequential(
             # Layer 1: 
             nn.Conv2d(4, 8, kernel_size=7, stride=3, padding=1),
-            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(8),
             activation,
             
             # Layer 2:
             nn.Conv2d(8, 16, kernel_size=3, stride=2, padding=1),
-            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(16),
             activation,
             
             # Layer 3:
             nn.Conv2d(16, 24, kernel_size=3, stride=2, padding=1),
-            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(24),
             activation,
             
             # Layer 4:
             nn.Conv2d(24, 32, kernel_size=3, stride=2, padding=0),
-            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(32),
             activation,
             
             # Layer 5:
             nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
-            nn.MaxPool2d(1, 1),  # No additional pooling
             nn.BatchNorm2d(64),
             activation,
         )
@@ -128,12 +123,11 @@ class Decoder(nn.Module):
             
             # 99x99 → 300x300
             nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=1)
-            # Removed Sigmoid - using Tanh for better range matching with normalized data
         )
     
     def forward(self, x):
         x = self.body(x)
-        x = x.view(-1, 64, self.final_spatial_size, self.final_spatial_size)  # Reshape to (batch_size, 64, 7, 7)
+        x = x.view(-1, 64, self.final_spatial_size, self.final_spatial_size) # Reshape to (batch_size, channels, H, W)
         x = self.deconv_layers(x)
         return x
 
