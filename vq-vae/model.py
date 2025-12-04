@@ -127,8 +127,8 @@ class Decoder(nn.Module):
             activation,
             
             # 99x99 → 300x300
-            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=1),
-            nn.Sigmoid()
+            nn.ConvTranspose2d(8, 4, kernel_size=7, stride=3, padding=1, output_padding=1)
+            # Removed Sigmoid - using Tanh for better range matching with normalized data
         )
     
     def forward(self, x):
@@ -168,7 +168,7 @@ class VectorQuantizer(nn.Module):
     
 # full class for VQ-VAE   
 class CellVQVAE(nn.Module):
-    def __init__(self, num_embeddings=1024, embedding_dim=512, commitment_cost=0.25, activation='relu'):
+    def __init__(self, activation='relu', embedding_dim=512, commitment_cost=0.25, reconstruction_loss_weight=1.0, num_embeddings=1024):
         super().__init__()
         # what is a good number of embeddings
         self.encoder = Encoder(activation=activation, embed_dim=embedding_dim)
@@ -178,6 +178,8 @@ class CellVQVAE(nn.Module):
                                flattened_size=self.encoder.flattened_size, 
                                final_spatial_size=self.encoder.final_spatial_size)
         self.vq_layer = VectorQuantizer(num_embeddings, embedding_dim, commitment_cost)
+        self.commitment_cost = commitment_cost
+        self.reconstruction_loss_weight = reconstruction_loss_weight
 
     def forward(self, x):
         x_encoded = self.encoder(x)  # Encode input to latent space
@@ -188,29 +190,39 @@ class CellVQVAE(nn.Module):
     def train(self, mode=True):
         super().train(mode)
 
-    def train_step(self, x, optimizer, masks=None):
+    def train_step(self, x, optimizer, masks=None, gradient_clip_norm=None, scheduler=None):
         self.train()
         optimizer.zero_grad()
 
         # forward pass
         x_reconstructed, vq_loss, _ = self.forward(x)
         
-        # loss computation
-        # loss = reconstruction loss + vq loss + commitment loss
+        # loss computation with proper weighting
+        # loss = weighted reconstruction loss + vq loss + commitment loss
         if masks is not None:
             if len(masks.shape) == 3:
                 masks = masks.unsqueeze(1)  # add channel dimension
-            reconstruction_loss = nn.MSELoss()(x_reconstructed * masks, x * masks) # add mask here (hopefully shapes work out :D)
+            reconstruction_loss = nn.MSELoss()(x_reconstructed * masks, x * masks)
         else:
             reconstruction_loss = nn.MSELoss()(x_reconstructed, x)
 
-        loss = vq_loss + reconstruction_loss
+        # Apply weighting to balance loss terms
+        weighted_reconstruction_loss = self.reconstruction_loss_weight * reconstruction_loss
+        loss = weighted_reconstruction_loss + vq_loss
         loss.backward()
+        
+        # gradient clipping
+        if gradient_clip_norm is not None:
+            torch.nn.utils.clip_grad_norm_(self.parameters(), gradient_clip_norm)
         
         # optimizer step
         optimizer.step()
+        
+        # scheduler step (if provided)
+        if scheduler is not None:
+            scheduler.step()
 
-        return loss
+        return loss, reconstruction_loss, vq_loss
 
 
 # Understanding the loss computation for VQ-VAE
