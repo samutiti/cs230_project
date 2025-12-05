@@ -1,0 +1,34 @@
+# Core PyTorch and ML libraries
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# Data handling and processing
+numpy>=1.21.0
+tifffile>=2021.7.2
+scipy>=1.7.0
+scikit-learn>=1.0.0
+scikit-image>=0.19.0
+
+# Visualization and plotting
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Progress bars and utilities
+tqdm>=4.62.0
+argparse
+
+# Image processing and metrics
+opencv-python>=4.5.0
+Pillow>=8.3.0
+
+# Optional: For enhanced features
+# tensorboard>=2.7.0  # For advanced logging
+# wandb>=0.12.0       # For experiment tracking
+# lpips>=0.1.4        # For perceptual loss (alternative implementation)
+
+# Development and testing (optional)
+# pytest>=6.2.0
+# black>=21.0.0
+# flake8>=3.9.0
