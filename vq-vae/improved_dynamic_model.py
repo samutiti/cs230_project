@@ -267,18 +267,19 @@ class ImprovedVectorQuantizer(nn.Module):
             embed_onehot = F.one_hot(embed_inds, self.num_embeddings).float()
             cluster_size = embed_onehot.sum(0)
             
-            # EMA update
-            self.cluster_size.mul_(self.decay).add_(cluster_size, alpha=1 - self.decay)
-            
-            # Update embeddings
-            embed_sum = torch.matmul(embed_onehot.t(), x)
-            self.embed_avg.mul_(self.decay).add_(embed_sum, alpha=1 - self.decay)
-            
-            # Normalize
-            n = self.cluster_size.sum()
-            cluster_size = (self.cluster_size + 1e-5) / (n + self.num_embeddings * 1e-5) * n
-            embed_normalized = self.embed_avg / cluster_size.unsqueeze(1)
-            self.embeddings.weight.data.copy_(embed_normalized)
+            # EMA update (avoid in-place operations)
+            with torch.no_grad():
+                self.cluster_size.data = self.cluster_size * self.decay + cluster_size * (1 - self.decay)
+                
+                # Update embeddings
+                embed_sum = torch.matmul(embed_onehot.t(), x)
+                self.embed_avg.data = self.embed_avg * self.decay + embed_sum * (1 - self.decay)
+                
+                # Normalize
+                n = self.cluster_size.sum()
+                cluster_size_norm = (self.cluster_size + 1e-5) / (n + self.num_embeddings * 1e-5) * n
+                embed_normalized = self.embed_avg / cluster_size_norm.unsqueeze(1)
+                self.embeddings.weight.data = embed_normalized
         
         # Compute losses
         codebook_loss = F.mse_loss(x_quantized.detach(), x)
