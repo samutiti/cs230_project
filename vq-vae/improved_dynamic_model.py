@@ -306,10 +306,11 @@ class ImprovedVectorQuantizer(nn.Module):
         return x_quantized, codebook_loss + commitment_loss, embed_inds
 
 class PerceptualLoss(nn.Module):
-    """Perceptual loss using VGG features"""
+    """Perceptual loss using VGG features with gradient-safe implementation"""
     def __init__(self, feature_layers=[0, 5, 10, 19, 28]):
         super().__init__()
-        vgg = models.vgg19(pretrained=True).features
+        # Use updated weights parameter instead of deprecated pretrained
+        vgg = models.vgg19(weights=models.VGG19_Weights.IMAGENET1K_V1).features
         self.feature_layers = feature_layers
         self.features = nn.ModuleList()
         
@@ -333,10 +334,12 @@ class PerceptualLoss(nn.Module):
             y = y[:, :3, :, :]
         
         loss = 0
+        # Process each feature extractor independently to avoid in-place conflicts
         for feature_extractor in self.features:
-            x = feature_extractor(x)
-            y = feature_extractor(y)
-            loss += F.mse_loss(x, y)
+            # Start fresh with original inputs for each feature extractor
+            x_feat = feature_extractor(x.clone())
+            y_feat = feature_extractor(y.clone())
+            loss += F.mse_loss(x_feat, y_feat)
         
         return loss
 
