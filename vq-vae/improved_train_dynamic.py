@@ -8,6 +8,7 @@ from tqdm import tqdm
 import os
 import numpy as np
 import tifffile as tf
+import torch
 from torchvision.transforms import ToTensor
 import matplotlib.pyplot as plt
 from collections import defaultdict
@@ -34,12 +35,24 @@ class ImprovedDynamicCropDataset(CropDataset):
         self.normalize_method = normalize_method
     
     def __getitem__(self, idx):
-        """Enhanced preprocessing with better normalization"""
+        """Enhanced preprocessing with better normalization and data type handling"""
         image_filename = self.file_list[idx]
         image = np.array(tf.imread(os.path.join(self.data_directory, image_filename)))
         
-        # Convert to tensor
-        image = ToTensor()(image)
+        # Handle different data types - convert uint16 to float32
+        if image.dtype == np.uint16:
+            # Convert uint16 to float32 and normalize to [0, 1] range
+            image = image.astype(np.float32) / 65535.0
+        elif image.dtype == np.uint8:
+            # Convert uint8 to float32 and normalize to [0, 1] range
+            image = image.astype(np.float32) / 255.0
+        else:
+            # Ensure float32 for other types
+            image = image.astype(np.float32)
+        
+        # Convert to tensor manually (avoid ToTensor issues with uint16)
+        image = torch.from_numpy(image)
+        
         if image.shape[0] > 5:  # ensure CxHxW format
             image = image.permute(2, 0, 1)
         

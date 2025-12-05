@@ -1,5 +1,6 @@
 # Dataset & Loaders
 # Authors: Samantha Mutiti & Rong Chi
+import torch
 import torch.nn as nn
 import os, math
 import tifffile as tf
@@ -49,9 +50,21 @@ class CropDataset(Dataset):
             idx(int): index of data item to return'''
         image_filename = self.file_list[idx]
         image = np.array(tf.imread(os.path.join(self.data_directory, image_filename)))
-        # perform transforms
-        image = ToTensor()(image)  # Convert to tensor
-        # image = normalize_input_01(image)  # Normalize to [0, 1] REMOVING FOR NOW
+        
+        # Handle different data types - convert uint16 to float32
+        if image.dtype == np.uint16:
+            # Convert uint16 to float32 and normalize to [0, 1] range
+            image = image.astype(np.float32) / 65535.0
+        elif image.dtype == np.uint8:
+            # Convert uint8 to float32 and normalize to [0, 1] range
+            image = image.astype(np.float32) / 255.0
+        else:
+            # Ensure float32 for other types
+            image = image.astype(np.float32)
+        
+        # Convert to tensor manually (avoid ToTensor issues with uint16)
+        image = torch.from_numpy(image)
+        
         if image.shape[0] > 5: # ensure CxHxW format (no ims should have dimension 4 or 5 in H or W)
             image = image.permute(2, 0, 1) # reshape to CxHxW
         # Perform center padding to 256x256
