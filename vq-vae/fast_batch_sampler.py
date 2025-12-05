@@ -82,18 +82,14 @@ class FastSmartCollate:
         """Custom collate function with precomputed sizes"""
         images, masks, filenames = zip(*batch)
         
-        # Get target size for this batch (all images in batch should be similar)
-        # Use the size of the first image as reference
-        first_filename = filenames[0]
-        if first_filename in self.size_info:
-            target_h, target_w = self.size_info[first_filename]
-            # Round up to nearest multiple of 16
-            target_h = ((target_h + 15) // 16) * 16
-            target_w = ((target_w + 15) // 16) * 16
-        else:
-            # Fallback: find max dimensions in batch
-            target_h = max(img.shape[1] for img in images)
-            target_w = max(img.shape[2] for img in images)
+        # Always find the actual max dimensions in the current batch
+        # Don't rely on precomputed sizes as they may not match actual tensor shapes
+        target_h = max(img.shape[1] for img in images)
+        target_w = max(img.shape[2] for img in images)
+        
+        # Round up to nearest multiple of 16
+        target_h = ((target_h + 15) // 16) * 16
+        target_w = ((target_w + 15) // 16) * 16
         
         # Pad all images to target size
         padded_images = []
@@ -111,8 +107,8 @@ class FastSmartCollate:
                 pad_top = pad_h // 2
                 pad_bottom = pad_h - pad_top
                 
-                # Pad image with reflection
-                padded_img = F.pad(img, (pad_left, pad_right, pad_top, pad_bottom), mode='reflect')
+                # Use 'edge' mode which replicates the edge values (safer than 'reflect')
+                padded_img = F.pad(img, (pad_left, pad_right, pad_top, pad_bottom), mode='constant', value=0)
                 
                 # Pad mask with zeros
                 if mask.dim() == 2:
