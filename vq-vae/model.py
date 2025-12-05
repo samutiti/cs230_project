@@ -177,7 +177,8 @@ class CellVQVAE(nn.Module):
     def forward(self, x):
         x_encoded = self.encoder(x)  # Encode input to latent space
         x_q, vq_loss, _ = self.vq_layer(x_encoded)  # Vector quantization
-        x_reconstructed = self.decoder(x_q)  # Decode quantized latent vectors
+        x_q_st = x_encoded + (x_q - x_encoded).detach()  # Straight-through estimator
+        x_reconstructed = self.decoder(x_q_st)  # Decode quantized latent vectors
         return x_reconstructed, vq_loss, x_encoded
     
     def train(self, mode=True):

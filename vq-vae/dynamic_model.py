@@ -239,9 +239,11 @@ class DynamicCellVQVAE(nn.Module):
         
         # Vector quantization
         x_q, vq_loss, embed_inds = self.vq_layer(x_encoded)
+        x_q_st = x_encoded + (x_q - x_encoded).detach()  # Straight-through estimator
+        x_reconstructed = self.decoder(x_q_st, target_size)  # Decode quantized latent vectors
         
         # Decode to target size, then remove padding
-        x_reconstructed = self.decoder(x_q, target_size)
+        # x_reconstructed = self.decoder(x_q, target_size)
         x_reconstructed = self.remove_padding(x_reconstructed, padding_info)
         
         return x_reconstructed, vq_loss, x_encoded, embed_inds
