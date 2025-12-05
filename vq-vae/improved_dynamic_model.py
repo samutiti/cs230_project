@@ -20,22 +20,22 @@ class ResidualBlock(nn.Module):
     """Residual block with batch normalization and skip connections"""
     def __init__(self, channels, activation='relu'):
         super().__init__()
-        self.activation = get_activation(activation)
+        self.activation_name = activation
         self.conv1 = nn.Conv2d(channels, channels, kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(channels)
         self.conv2 = nn.Conv2d(channels, channels, kernel_size=3, padding=1)
         self.bn2 = nn.BatchNorm2d(channels)
         
     def forward(self, x):
-        residual = x
-        x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.activation(x)
-        x = self.conv2(x)
-        x = self.bn2(x)
-        x = x + residual
-        x = self.activation(x)
-        return x
+        residual = x.clone()  # Ensure we have a clean copy
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = get_activation(self.activation_name)(out)  # Fresh activation instance
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = torch.add(out, residual)  # Explicit non-in-place addition
+        out = get_activation(self.activation_name)(out)  # Fresh activation instance
+        return out
 
 class AttentionBlock(nn.Module):
     """Self-attention block for better feature preservation"""
@@ -74,25 +74,24 @@ class ImprovedDynamicEncoder(nn.Module):
         valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
         if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
+        
+        self.activation_name = activation
+        
         # Less aggressive downsampling to preserve information
         self.conv1 = nn.Conv2d(4, 32, kernel_size=7, stride=2, padding=3)
         self.bn1 = nn.BatchNorm2d(32)
-        self.activation1 = get_activation(activation)
         self.res1 = ResidualBlock(32, activation)
         
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
-        self.activation2 = get_activation(activation)
         self.res2 = ResidualBlock(64, activation)
         
         self.conv3 = nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(128)
-        self.activation3 = get_activation(activation)
         self.res3 = ResidualBlock(128, activation)
         
         self.conv4 = nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(256)
-        self.activation4 = get_activation(activation)
         
         # Attention for better feature preservation
         self.attention = AttentionBlock(256)
@@ -118,28 +117,28 @@ class ImprovedDynamicEncoder(nn.Module):
         # Layer 1
         x = self.conv1(x)
         x = self.bn1(x)
-        x = self.activation1(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         x = self.res1(x)
-        skip_connections.append(x)
+        skip_connections.append(x.clone())  # Ensure clean copy for skip connection
         
         # Layer 2
         x = self.conv2(x)
         x = self.bn2(x)
-        x = self.activation2(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         x = self.res2(x)
-        skip_connections.append(x)
+        skip_connections.append(x.clone())  # Ensure clean copy for skip connection
         
         # Layer 3
         x = self.conv3(x)
         x = self.bn3(x)
-        x = self.activation3(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         x = self.res3(x)
-        skip_connections.append(x)
+        skip_connections.append(x.clone())  # Ensure clean copy for skip connection
         
         # Layer 4
         x = self.conv4(x)
         x = self.bn4(x)
-        x = self.activation4(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         
         # Attention
         x = self.attention(x)
@@ -158,6 +157,9 @@ class ImprovedDynamicDecoder(nn.Module):
         valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
         if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
+        
+        self.activation_name = activation
+        
         # Linear layers to expand embedding
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 512),
@@ -176,25 +178,21 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconvolutional layers with skip connection processing
         self.deconv1 = nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1)
         self.bn1 = nn.BatchNorm2d(128)
-        self.activation1 = get_activation(activation)
         self.skip_conv1 = nn.Conv2d(128, 128, kernel_size=1)  # For skip connection from conv3 (128 channels)
         self.res1 = ResidualBlock(128, activation)
         
         self.deconv2 = nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
-        self.activation2 = get_activation(activation)
         self.skip_conv2 = nn.Conv2d(64, 64, kernel_size=1)  # For skip connection from conv2 (64 channels)
         self.res2 = ResidualBlock(64, activation)
         
         self.deconv3 = nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(32)
-        self.activation3 = get_activation(activation)
         self.skip_conv3 = nn.Conv2d(32, 32, kernel_size=1)  # For skip connection from conv1 (32 channels)
         self.res3 = ResidualBlock(32, activation)
         
         self.deconv4 = nn.ConvTranspose2d(32, 16, kernel_size=4, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(16)
-        self.activation4 = get_activation(activation)
         
         self.final_conv = nn.Conv2d(16, 4, kernel_size=3, padding=1)
     
@@ -207,37 +205,37 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconv 1
         x = self.deconv1(x)
         x = self.bn1(x)
-        x = self.activation1(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         if skip_connections is not None and len(skip_connections) >= 3:
-            skip = F.interpolate(skip_connections[2].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[2].detach().clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv1(skip)
-            x = x + skip
+            x = torch.add(x, skip)  # Explicit non-in-place addition
         x = self.res1(x)
         
         # Deconv 2
         x = self.deconv2(x)
         x = self.bn2(x)
-        x = self.activation2(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         if skip_connections is not None and len(skip_connections) >= 2:
-            skip = F.interpolate(skip_connections[1].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[1].detach().clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv2(skip)
-            x = x + skip
+            x = torch.add(x, skip)  # Explicit non-in-place addition
         x = self.res2(x)
         
         # Deconv 3
         x = self.deconv3(x)
         x = self.bn3(x)
-        x = self.activation3(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         if skip_connections is not None and len(skip_connections) >= 1:
-            skip = F.interpolate(skip_connections[0].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[0].detach().clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv3(skip)
-            x = x + skip
+            x = torch.add(x, skip)  # Explicit non-in-place addition
         x = self.res3(x)
         
         # Deconv 4
         x = self.deconv4(x)
         x = self.bn4(x)
-        x = self.activation4(x)
+        x = get_activation(self.activation_name)(x)  # Fresh activation instance
         
         # Interpolate to target size
         x = F.interpolate(x, size=target_size, mode='bilinear', align_corners=False)
@@ -283,17 +281,20 @@ class ImprovedVectorQuantizer(nn.Module):
             
             # EMA update (avoid in-place operations)
             with torch.no_grad():
-                self.cluster_size.data = self.cluster_size * self.decay + cluster_size * (1 - self.decay)
+                # Use explicit non-in-place operations for EMA updates
+                new_cluster_size = self.cluster_size * self.decay + cluster_size * (1 - self.decay)
+                self.cluster_size.data.copy_(new_cluster_size)
                 
                 # Update embeddings
                 embed_sum = torch.matmul(embed_onehot.t(), x)
-                self.embed_avg.data = self.embed_avg * self.decay + embed_sum * (1 - self.decay)
+                new_embed_avg = self.embed_avg * self.decay + embed_sum * (1 - self.decay)
+                self.embed_avg.data.copy_(new_embed_avg)
                 
                 # Normalize
                 n = self.cluster_size.sum()
                 cluster_size_norm = (self.cluster_size + 1e-5) / (n + self.num_embeddings * 1e-5) * n
                 embed_normalized = self.embed_avg / cluster_size_norm.unsqueeze(1)
-                self.embeddings.weight.data = embed_normalized
+                self.embeddings.weight.data.copy_(embed_normalized)
         
         # Compute losses
         codebook_loss = F.mse_loss(x_quantized, x.detach())
@@ -416,8 +417,8 @@ class ImprovedDynamicCellVQVAE(nn.Module):
         # Vector quantization
         x_q, vq_loss, embed_inds = self.vq_layer(x_encoded)
         
-        # Straight-through estimator
-        x_q_st = x_encoded + (x_q - x_encoded).detach()
+        # Straight-through estimator (avoid in-place operations)
+        x_q_st = torch.add(x_encoded, (x_q - x_encoded).detach())
         
         # Decode with skip connections
         x_reconstructed = self.decoder(x_q_st, target_size, skip_connections)
