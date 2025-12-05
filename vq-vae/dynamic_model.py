@@ -282,7 +282,9 @@ class DynamicCellVQVAE(nn.Module):
             content_ratio = content_weight.mean()
             
             # Balance foreground and background
-            content_weight = torch.where(content_weight > 0, 1.0 / (content_ratio + 1e-8), 0.1)
+            content_weight = torch.where(content_weight > 0, 
+                           torch.clamp(1.0 / (content_ratio + 1e-8), min=0.1, max=10.0), 
+                           0.1)
             
             # Apply content weighting to reconstruction loss
             weighted_diff = (x_reconstructed - x) * content_weight.unsqueeze(1)  # Add channel dimension
@@ -291,7 +293,7 @@ class DynamicCellVQVAE(nn.Module):
             reconstruction_loss = F.mse_loss(x_reconstructed, x)
         
         # Apply weighting to balance loss terms
-        weighted_reconstruction_loss = self.reconstruction_loss_weight * reconstruction_loss
+        weighted_reconstruction_loss = self.reconstruction_loss_weight * reconstruction_loss * 0.001 # further scale down recon loss?
         loss = weighted_reconstruction_loss + vq_loss
         
         loss.backward()
