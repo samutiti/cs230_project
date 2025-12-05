@@ -23,6 +23,11 @@ from smart_batching import (
     SingleImageOptimizer,
     analyze_dataset_sizes
 )
+from fast_batch_sampler import (
+    create_fast_dataloader,
+    verify_precomputed_batches,
+    BatchGroupAnalyzer
+)
 
 optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD, 'adamw': torch.optim.AdamW}
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -266,42 +271,67 @@ def train(config, augment_epoch=-1):
         normalize_method=normalize_method
     )
     
-    # Analyze dataset sizes for optimal batching strategy
-    dataset_stats = analyze_dataset_sizes(train_dataset, max_samples=50)
-    
-    # Choose batching strategy based on dataset characteristics
+    # Choose batching strategy based on configuration
     use_smart_batching = config.get('use_smart_batching', True)
     use_gradient_accumulation = config.get('use_gradient_accumulation', False)
+    use_precomputed_batches = config.get('use_precomputed_batches', False)
+    precomputed_batches_path = config.get('precomputed_batches', None)
     accumulation_steps = config.get('accumulation_steps', 4)
     
-    if use_smart_batching and dataset_stats and dataset_stats['unique_sizes'] < 100:
-        print("Using smart batching strategy...")
-        train_dataloader = create_smart_dataloader(
-            train_dataset,
-            batch_size=config['batch_size'],
-            shuffle=True,
-            num_workers=config.get('num_workers', 4),
-            size_tolerance=config.get('size_tolerance', 0.3),
-            pin_memory=True
-        )
-    elif config['batch_size'] == 1:
-        print("Using optimized single-image batching...")
-        # Optimize model for single-batch training
-        model = SingleImageOptimizer.optimize_model_for_single_batch(model)
-        train_dataloader = SingleImageOptimizer.create_efficient_single_dataloader(
-            train_dataset,
-            num_workers=min(2, config.get('num_workers', 4))
-        )
-    else:
-        print("Using standard batching with gradient accumulation...")
-        use_gradient_accumulation = True
-        train_dataloader = DataLoader(
-            train_dataset,
-            batch_size=1,  # Use batch_size=1 with accumulation
-            shuffle=True,
-            num_workers=config.get('num_workers', 4),
-            pin_memory=True
-        )
+    if use_precomputed_batches and precomputed_batches_path:
+        print("Using precomputed batch groups...")
+        
+        # Verify precomputed batches match dataset
+        if verify_precomputed_batches(train_dataset, precomputed_batches_path):
+            # Analyze precomputed batches
+            analyzer = BatchGroupAnalyzer(precomputed_batches_path)
+            analyzer.print_analysis()
+            
+            # Create fast dataloader
+            train_dataloader = create_fast_dataloader(
+                train_dataset,
+                precomputed_batches_path,
+                shuffle=True,
+                num_workers=config.get('num_workers', 4),
+                pin_memory=True
+            )
+        else:
+            print("Warning: Precomputed batches don't match dataset. Falling back to smart batching.")
+            use_smart_batching = True
+            use_precomputed_batches = False
+    
+    if not use_precomputed_batches:
+        # Analyze dataset sizes for optimal batching strategy
+        dataset_stats = analyze_dataset_sizes(train_dataset, max_samples=50)
+        
+        if use_smart_batching and dataset_stats and dataset_stats['unique_sizes'] < 100:
+            print("Using smart batching strategy...")
+            train_dataloader = create_smart_dataloader(
+                train_dataset,
+                batch_size=config['batch_size'],
+                shuffle=True,
+                num_workers=config.get('num_workers', 4),
+                size_tolerance=config.get('size_tolerance', 0.3),
+                pin_memory=True
+            )
+        elif config['batch_size'] == 1:
+            print("Using optimized single-image batching...")
+            # Optimize model for single-batch training
+            model = SingleImageOptimizer.optimize_model_for_single_batch(model)
+            train_dataloader = SingleImageOptimizer.create_efficient_single_dataloader(
+                train_dataset,
+                num_workers=min(2, config.get('num_workers', 4))
+            )
+        else:
+            print("Using standard batching with gradient accumulation...")
+            use_gradient_accumulation = True
+            train_dataloader = DataLoader(
+                train_dataset,
+                batch_size=1,  # Use batch_size=1 with accumulation
+                shuffle=True,
+                num_workers=config.get('num_workers', 4),
+                pin_memory=True
+            )
     
     # Validation dataset
     val_dataloader = None
@@ -312,25 +342,37 @@ def train(config, augment_epoch=-1):
             normalize_method=normalize_method
         )
         
-        # Use smart batching for validation too, but with smaller batch size
-        val_batch_size = min(config['batch_size'], 4)
-        if use_smart_batching:
-            val_dataloader = create_smart_dataloader(
+        # Check for precomputed validation batches
+        val_precomputed_path = config.get('precomputed_val_batches', None)
+        if use_precomputed_batches and val_precomputed_path:
+            print("Using precomputed validation batches...")
+            val_dataloader = create_fast_dataloader(
                 val_dataset,
-                batch_size=val_batch_size,
+                val_precomputed_path,
                 shuffle=False,
                 num_workers=config.get('num_workers', 4),
-                size_tolerance=config.get('size_tolerance', 0.3),
                 pin_memory=True
             )
         else:
-            val_dataloader = DataLoader(
-                val_dataset,
-                batch_size=val_batch_size,
-                shuffle=False,
-                num_workers=config.get('num_workers', 4),
-                pin_memory=True
-            )
+            # Use smart batching for validation too, but with smaller batch size
+            val_batch_size = min(config['batch_size'], 4)
+            if use_smart_batching:
+                val_dataloader = create_smart_dataloader(
+                    val_dataset,
+                    batch_size=val_batch_size,
+                    shuffle=False,
+                    num_workers=config.get('num_workers', 4),
+                    size_tolerance=config.get('size_tolerance', 0.3),
+                    pin_memory=True
+                )
+            else:
+                val_dataloader = DataLoader(
+                    val_dataset,
+                    batch_size=val_batch_size,
+                    shuffle=False,
+                    num_workers=config.get('num_workers', 4),
+                    pin_memory=True
+                )
         print(f"Validation dataset loaded with {len(val_dataset)} samples")
     
     # Early stopping
