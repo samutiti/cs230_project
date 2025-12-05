@@ -269,18 +269,23 @@ class DynamicCellVQVAE(nn.Module):
         self.train()
         optimizer.zero_grad()
         
-        # Apply adaptive padding
-        x_padded, masks_padded, padding_info = self.adaptive_padding(x, masks)
+        # For bucketed data, x already has minimal padding so we can use it directly
+        # No need for additional adaptive padding since bucketing handles size matching
         
         # Forward pass
         x_reconstructed, vq_loss, _, _ = self.forward(x)
         
         # Create content-aware loss weighting
         if masks is not None:
-            content_weight = self.create_content_mask(masks, padding_info)
+            # Simple content mask based on non-zero regions
+            content_weight = (masks.float() > 0).float()
+            content_ratio = content_weight.mean()
+            
+            # Balance foreground and background
+            content_weight = torch.where(content_weight > 0, 1.0 / (content_ratio + 1e-8), 0.1)
             
             # Apply content weighting to reconstruction loss
-            weighted_diff = (x_reconstructed - x) * content_weight
+            weighted_diff = (x_reconstructed - x) * content_weight.unsqueeze(1)  # Add channel dimension
             reconstruction_loss = torch.mean(weighted_diff ** 2)
         else:
             reconstruction_loss = F.mse_loss(x_reconstructed, x)
