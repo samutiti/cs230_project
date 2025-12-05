@@ -166,17 +166,17 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconvolutional layers with skip connection processing
         self.deconv1 = nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1)
         self.bn1 = nn.BatchNorm2d(128)
-        self.skip_conv1 = nn.Conv2d(256, 128, kernel_size=1)  # For skip connection
+        self.skip_conv1 = nn.Conv2d(128, 128, kernel_size=1)  # For skip connection from conv3 (128 channels)
         self.res1 = ResidualBlock(128, activation)
         
         self.deconv2 = nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
-        self.skip_conv2 = nn.Conv2d(128, 64, kernel_size=1)  # For skip connection
+        self.skip_conv2 = nn.Conv2d(64, 64, kernel_size=1)  # For skip connection from conv2 (64 channels)
         self.res2 = ResidualBlock(64, activation)
         
         self.deconv3 = nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(32)
-        self.skip_conv3 = nn.Conv2d(64, 32, kernel_size=1)  # For skip connection
+        self.skip_conv3 = nn.Conv2d(32, 32, kernel_size=1)  # For skip connection from conv1 (32 channels)
         self.res3 = ResidualBlock(32, activation)
         
         self.deconv4 = nn.ConvTranspose2d(32, 16, kernel_size=4, stride=2, padding=1)
