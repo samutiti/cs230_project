@@ -74,23 +74,25 @@ class ImprovedDynamicEncoder(nn.Module):
         valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
         if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
-        self.activation = get_activation(activation)
-        
         # Less aggressive downsampling to preserve information
         self.conv1 = nn.Conv2d(4, 32, kernel_size=7, stride=2, padding=3)
         self.bn1 = nn.BatchNorm2d(32)
+        self.activation1 = get_activation(activation)
         self.res1 = ResidualBlock(32, activation)
         
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
+        self.activation2 = get_activation(activation)
         self.res2 = ResidualBlock(64, activation)
         
         self.conv3 = nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(128)
+        self.activation3 = get_activation(activation)
         self.res3 = ResidualBlock(128, activation)
         
         self.conv4 = nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(256)
+        self.activation4 = get_activation(activation)
         
         # Attention for better feature preservation
         self.attention = AttentionBlock(256)
@@ -116,28 +118,28 @@ class ImprovedDynamicEncoder(nn.Module):
         # Layer 1
         x = self.conv1(x)
         x = self.bn1(x)
-        x = self.activation(x)
+        x = self.activation1(x)
         x = self.res1(x)
         skip_connections.append(x)
         
         # Layer 2
         x = self.conv2(x)
         x = self.bn2(x)
-        x = self.activation(x)
+        x = self.activation2(x)
         x = self.res2(x)
         skip_connections.append(x)
         
         # Layer 3
         x = self.conv3(x)
         x = self.bn3(x)
-        x = self.activation(x)
+        x = self.activation3(x)
         x = self.res3(x)
         skip_connections.append(x)
         
         # Layer 4
         x = self.conv4(x)
         x = self.bn4(x)
-        x = self.activation(x)
+        x = self.activation4(x)
         
         # Attention
         x = self.attention(x)
@@ -156,8 +158,6 @@ class ImprovedDynamicDecoder(nn.Module):
         valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
         if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
-        self.activation = get_activation(activation)
-        
         # Linear layers to expand embedding
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 512),
@@ -176,21 +176,25 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconvolutional layers with skip connection processing
         self.deconv1 = nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1)
         self.bn1 = nn.BatchNorm2d(128)
+        self.activation1 = get_activation(activation)
         self.skip_conv1 = nn.Conv2d(128, 128, kernel_size=1)  # For skip connection from conv3 (128 channels)
         self.res1 = ResidualBlock(128, activation)
         
         self.deconv2 = nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(64)
+        self.activation2 = get_activation(activation)
         self.skip_conv2 = nn.Conv2d(64, 64, kernel_size=1)  # For skip connection from conv2 (64 channels)
         self.res2 = ResidualBlock(64, activation)
         
         self.deconv3 = nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1)
         self.bn3 = nn.BatchNorm2d(32)
+        self.activation3 = get_activation(activation)
         self.skip_conv3 = nn.Conv2d(32, 32, kernel_size=1)  # For skip connection from conv1 (32 channels)
         self.res3 = ResidualBlock(32, activation)
         
         self.deconv4 = nn.ConvTranspose2d(32, 16, kernel_size=4, stride=2, padding=1)
         self.bn4 = nn.BatchNorm2d(16)
+        self.activation4 = get_activation(activation)
         
         self.final_conv = nn.Conv2d(16, 4, kernel_size=3, padding=1)
     
@@ -203,7 +207,7 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconv 1
         x = self.deconv1(x)
         x = self.bn1(x)
-        x = self.activation(x)
+        x = self.activation1(x)
         if skip_connections is not None and len(skip_connections) >= 3:
             skip = F.interpolate(skip_connections[2].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv1(skip)
@@ -213,7 +217,7 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconv 2
         x = self.deconv2(x)
         x = self.bn2(x)
-        x = self.activation(x)
+        x = self.activation2(x)
         if skip_connections is not None and len(skip_connections) >= 2:
             skip = F.interpolate(skip_connections[1].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv2(skip)
@@ -223,7 +227,7 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconv 3
         x = self.deconv3(x)
         x = self.bn3(x)
-        x = self.activation(x)
+        x = self.activation3(x)
         if skip_connections is not None and len(skip_connections) >= 1:
             skip = F.interpolate(skip_connections[0].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv3(skip)
@@ -233,7 +237,7 @@ class ImprovedDynamicDecoder(nn.Module):
         # Deconv 4
         x = self.deconv4(x)
         x = self.bn4(x)
-        x = self.activation(x)
+        x = self.activation4(x)
         
         # Interpolate to target size
         x = F.interpolate(x, size=target_size, mode='bilinear', align_corners=False)
@@ -292,8 +296,8 @@ class ImprovedVectorQuantizer(nn.Module):
                 self.embeddings.weight.data = embed_normalized
         
         # Compute losses
-        codebook_loss = F.mse_loss(x_quantized.detach(), x)
-        commitment_loss = F.mse_loss(x_quantized, x.detach()) * self.commitment_cost
+        codebook_loss = F.mse_loss(x_quantized, x.detach())
+        commitment_loss = F.mse_loss(x_quantized.detach(), x) * self.commitment_cost
         
         return x_quantized, codebook_loss + commitment_loss, embed_inds
 
