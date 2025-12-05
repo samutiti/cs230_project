@@ -6,13 +6,21 @@ import torch.nn.functional as F
 import math
 import torchvision.models as models
 
-activation_dict = {'relu': nn.ReLU(), 'tanh': nn.Tanh(), 'sigmoid': nn.Sigmoid(), 'gelu': nn.GELU()}
+def get_activation(activation_name):
+    """Get a new activation function instance to avoid in-place operation issues"""
+    activation_dict = {
+        'relu': nn.ReLU(inplace=False),
+        'tanh': nn.Tanh(),
+        'sigmoid': nn.Sigmoid(),
+        'gelu': nn.GELU()
+    }
+    return activation_dict[activation_name]
 
 class ResidualBlock(nn.Module):
     """Residual block with batch normalization and skip connections"""
     def __init__(self, channels, activation='relu'):
         super().__init__()
-        self.activation = activation_dict[activation]
+        self.activation = get_activation(activation)
         self.conv1 = nn.Conv2d(channels, channels, kernel_size=3, padding=1)
         self.bn1 = nn.BatchNorm2d(channels)
         self.conv2 = nn.Conv2d(channels, channels, kernel_size=3, padding=1)
@@ -63,9 +71,10 @@ class ImprovedDynamicEncoder(nn.Module):
     """Enhanced encoder with skip connections and attention"""
     def __init__(self, activation='relu', embed_dim=256):
         super().__init__()
-        if activation not in activation_dict:
+        valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
+        if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
-        self.activation = activation_dict[activation]
+        self.activation = get_activation(activation)
         
         # Less aggressive downsampling to preserve information
         self.conv1 = nn.Conv2d(4, 32, kernel_size=7, stride=2, padding=3)
@@ -92,10 +101,10 @@ class ImprovedDynamicEncoder(nn.Module):
         # Linear layers with proper dimensionality
         self.body = nn.Sequential(
             nn.Linear(256 * 4 * 4, 1024),
-            self.activation,
+            get_activation(activation),
             nn.Dropout(0.1),
             nn.Linear(1024, 512),
-            self.activation,
+            get_activation(activation),
             nn.Dropout(0.1),
             nn.Linear(512, embed_dim)
         )
@@ -144,20 +153,21 @@ class ImprovedDynamicDecoder(nn.Module):
     """Enhanced decoder with skip connections"""
     def __init__(self, activation='relu', embedding_dim=256):
         super().__init__()
-        if activation not in activation_dict:
+        valid_activations = ['relu', 'tanh', 'sigmoid', 'gelu']
+        if activation not in valid_activations:
             raise ValueError(f'activation {activation} not supported')
-        self.activation = activation_dict[activation]
+        self.activation = get_activation(activation)
         
         # Linear layers to expand embedding
         self.body = nn.Sequential(
             nn.Linear(embedding_dim, 512),
-            self.activation,
+            get_activation(activation),
             nn.Dropout(0.1),
             nn.Linear(512, 1024),
-            self.activation,
+            get_activation(activation),
             nn.Dropout(0.1),
             nn.Linear(1024, 256 * 4 * 4),
-            self.activation
+            get_activation(activation)
         )
         
         # Attention
@@ -195,7 +205,7 @@ class ImprovedDynamicDecoder(nn.Module):
         x = self.bn1(x)
         x = self.activation(x)
         if skip_connections is not None and len(skip_connections) >= 3:
-            skip = F.interpolate(skip_connections[2], size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[2].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv1(skip)
             x = x + skip
         x = self.res1(x)
@@ -205,7 +215,7 @@ class ImprovedDynamicDecoder(nn.Module):
         x = self.bn2(x)
         x = self.activation(x)
         if skip_connections is not None and len(skip_connections) >= 2:
-            skip = F.interpolate(skip_connections[1], size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[1].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv2(skip)
             x = x + skip
         x = self.res2(x)
@@ -215,7 +225,7 @@ class ImprovedDynamicDecoder(nn.Module):
         x = self.bn3(x)
         x = self.activation(x)
         if skip_connections is not None and len(skip_connections) >= 1:
-            skip = F.interpolate(skip_connections[0], size=x.shape[2:], mode='bilinear', align_corners=False)
+            skip = F.interpolate(skip_connections[0].clone(), size=x.shape[2:], mode='bilinear', align_corners=False)
             skip = self.skip_conv3(skip)
             x = x + skip
         x = self.res3(x)
