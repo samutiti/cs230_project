@@ -69,7 +69,7 @@ def train(config, augment_epoch=-1):
     
     # Load data with dynamic dataset
     dataset = DynamicCropDataset(file_dir=config['data_directory'], type='train')
-    dataloader = DataLoader(dataset, batch_size=1, shuffle=True)  # Use batch_size=1 for variable sizes
+    dataloader = DataLoader(dataset, batch_size=config['batch_size'], shuffle=True)  # Use batch_size=1 for variable sizes
     
     # Training setup
     epochs = config['epochs']
