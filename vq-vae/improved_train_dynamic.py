@@ -17,6 +17,12 @@ import time
 from improved_dynamic_model import ImprovedDynamicCellVQVAE
 from data import CropDataset
 from utils import *
+from smart_batching import (
+    create_smart_dataloader,
+    AccumulatedGradientTrainer,
+    SingleImageOptimizer,
+    analyze_dataset_sizes
+)
 
 optimizer_dict = {'adam': torch.optim.Adam, 'sgd': torch.optim.SGD, 'adamw': torch.optim.AdamW}
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -255,33 +261,76 @@ def train(config, augment_epoch=-1):
     
     # Load datasets
     train_dataset = ImprovedDynamicCropDataset(
-        file_dir=config['data_directory'], 
+        file_dir=config['data_directory'],
         type='train',
         normalize_method=normalize_method
     )
-    train_dataloader = DataLoader(
-        train_dataset, 
-        batch_size=config['batch_size'], 
-        shuffle=True,
-        num_workers=config.get('num_workers', 4),
-        pin_memory=True
-    )
+    
+    # Analyze dataset sizes for optimal batching strategy
+    dataset_stats = analyze_dataset_sizes(train_dataset, max_samples=50)
+    
+    # Choose batching strategy based on dataset characteristics
+    use_smart_batching = config.get('use_smart_batching', True)
+    use_gradient_accumulation = config.get('use_gradient_accumulation', False)
+    accumulation_steps = config.get('accumulation_steps', 4)
+    
+    if use_smart_batching and dataset_stats and dataset_stats['unique_sizes'] < 100:
+        print("Using smart batching strategy...")
+        train_dataloader = create_smart_dataloader(
+            train_dataset,
+            batch_size=config['batch_size'],
+            shuffle=True,
+            num_workers=config.get('num_workers', 4),
+            size_tolerance=config.get('size_tolerance', 0.3),
+            pin_memory=True
+        )
+    elif config['batch_size'] == 1:
+        print("Using optimized single-image batching...")
+        # Optimize model for single-batch training
+        model = SingleImageOptimizer.optimize_model_for_single_batch(model)
+        train_dataloader = SingleImageOptimizer.create_efficient_single_dataloader(
+            train_dataset,
+            num_workers=min(2, config.get('num_workers', 4))
+        )
+    else:
+        print("Using standard batching with gradient accumulation...")
+        use_gradient_accumulation = True
+        train_dataloader = DataLoader(
+            train_dataset,
+            batch_size=1,  # Use batch_size=1 with accumulation
+            shuffle=True,
+            num_workers=config.get('num_workers', 4),
+            pin_memory=True
+        )
     
     # Validation dataset
     val_dataloader = None
     if os.path.exists(os.path.join(config['data_directory'], 'val')):
         val_dataset = ImprovedDynamicCropDataset(
-            file_dir=config['data_directory'], 
+            file_dir=config['data_directory'],
             type='val',
             normalize_method=normalize_method
         )
-        val_dataloader = DataLoader(
-            val_dataset, 
-            batch_size=config['batch_size'], 
-            shuffle=False,
-            num_workers=config.get('num_workers', 4),
-            pin_memory=True
-        )
+        
+        # Use smart batching for validation too, but with smaller batch size
+        val_batch_size = min(config['batch_size'], 4)
+        if use_smart_batching:
+            val_dataloader = create_smart_dataloader(
+                val_dataset,
+                batch_size=val_batch_size,
+                shuffle=False,
+                num_workers=config.get('num_workers', 4),
+                size_tolerance=config.get('size_tolerance', 0.3),
+                pin_memory=True
+            )
+        else:
+            val_dataloader = DataLoader(
+                val_dataset,
+                batch_size=val_batch_size,
+                shuffle=False,
+                num_workers=config.get('num_workers', 4),
+                pin_memory=True
+            )
         print(f"Validation dataset loaded with {len(val_dataset)} samples")
     
     # Early stopping
@@ -297,10 +346,19 @@ def train(config, augment_epoch=-1):
     train_history = defaultdict(list)
     val_history = defaultdict(list)
     
+    # Setup gradient accumulation trainer if needed
+    gradient_trainer = None
+    if use_gradient_accumulation:
+        gradient_trainer = AccumulatedGradientTrainer(
+            model, optimizer, accumulation_steps=accumulation_steps
+        )
+        print(f"Using gradient accumulation with {accumulation_steps} steps")
+    
     print(f"Starting training with {len(train_dataset)} training samples")
     print(f"Device: {device}")
-    print(f"Batch size: {config['batch_size']}")
+    print(f"Effective batch size: {config['batch_size'] * (accumulation_steps if use_gradient_accumulation else 1)}")
     print(f"Learning rate: {config['learning_rate']}")
+    print(f"Batching strategy: {'Smart batching' if use_smart_batching else 'Standard batching'}")
     
     # Training loop
     for epoch in range(epochs):
@@ -317,10 +375,15 @@ def train(config, augment_epoch=-1):
             images = images.to(device, non_blocking=True)
             masks = masks.to(device, non_blocking=True)
             
-            # Training step
-            total_loss, recon_loss, vq_loss, perceptual_loss = model.train_step(
-                images, optimizer, masks, gradient_clip_norm
-            )
+            # Training step - use gradient accumulation if enabled
+            if gradient_trainer:
+                total_loss, recon_loss, vq_loss, perceptual_loss = gradient_trainer.train_step(
+                    images, masks, gradient_clip_norm
+                )
+            else:
+                total_loss, recon_loss, vq_loss, perceptual_loss = model.train_step(
+                    images, optimizer, masks, gradient_clip_norm
+                )
             
             # Accumulate losses
             epoch_losses['total_loss'] += total_loss.item()
@@ -333,12 +396,17 @@ def train(config, augment_epoch=-1):
             progress_bar.set_postfix({
                 'Loss': f"{total_loss.item():.4f}",
                 'Recon': f"{recon_loss.item():.4f}",
-                'VQ': f"{vq_loss.item():.6f}"
+                'VQ': f"{vq_loss.item():.6f}",
+                'Batch': f"{images.shape[0]}"
             })
             
             # Check for max batches per epoch
             if config.get('max_batches_per_epoch') and batch_idx >= config['max_batches_per_epoch']:
                 break
+        
+        # Finalize gradient accumulation if used
+        if gradient_trainer:
+            gradient_trainer.finalize_step(gradient_clip_norm)
         
         # Calculate average losses
         for key in epoch_losses:
